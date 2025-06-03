@@ -382,9 +382,26 @@ nav .right a.active {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.contact-section .group form button:hover {
+.contact-section .group form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.contact-section .group form button.success {
+    background: #4CAF50;
+}
+
+.contact-section .group form button.error {
+    background: #f44336;
+}
+
+.contact-section .group form button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(123, 145, 217, 0.3);
 }
