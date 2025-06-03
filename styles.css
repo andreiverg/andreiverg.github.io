@@ -596,3 +596,335 @@ nav .right a.active {
         justify-content: center;
     }
 }
+
+/* Footer Styles */
+footer {
+    background: var(--background-light);
+    padding: 4rem 5vw 2rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.footer-section a {
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-section a:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    margin-bottom: 0;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-section a:hover {
+        transform: translateX(0) translateY(-2px);
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1.5rem;
+    }
+
+    nav .right {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(30, 37, 50, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 1rem;
+        gap: 0;
+        justify-content: space-around;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+    }
+
+    nav .right a {
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    nav .right a i {
+        font-size: 1.2rem;
+    }
+
+    /* Adjust main content to account for bottom nav */
+    main {
+        padding-bottom: 80px;
+    }
+}
+
+/* Mobile Hero Section */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column-reverse;
+        padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-section .text {
+        max-width: 100%;
+    }
+
+    .hero-section .greeting {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .hero-section .text p {
+        font-size: 1rem;
+    }
+
+    .hero-section .links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-section .headshot {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .hero-section .headshot img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+/* Mobile Skills Section */
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .skills-section h2 {
+        font-size: 2rem;
+    }
+
+    .cells {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .cell {
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile Testimony Section */
+@media (max-width: 768px) {
+    .testimony-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .testimony-section .group {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .testimony-section .person-details img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Mobile Contact Section */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-section .group {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-section form {
+        padding: 1.5rem;
+    }
+
+    .contact-section form input,
+    .contact-section form textarea {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Mobile Projects Page */
+@media (max-width: 768px) {
+    .projects-header {
+        padding: calc(var(--nav-height) + 2rem) 1.5rem 2rem;
+    }
+
+    .projects-header h1 {
+        font-size: 2rem;
+    }
+
+    .projects-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-tags {
+        justify-content: center;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .project-links a {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* General Mobile Adjustments */
+@media (max-width: 768px) {
+    :root {
+        --nav-height: 60px;
+    }
+
+    h1, h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    section {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 380px) {
+    nav .right a span {
+        font-size: 0.7rem;
+    }
+
+    nav .right a i {
+        font-size: 1rem;
+    }
+
+    .hero-section .greeting {
+        font-size: 1.5rem;
+    }
+
+    .cells {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-section {
+        padding: calc(var(--nav-height) + 2rem) 3rem;
+    }
+
+    .hero-section .headshot img {
+        width: 300px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+    nav .right {
+        padding: 0.5rem;
+    }
+
+    nav .right a {
+        padding: 0.3rem;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: calc(var(--nav-height) + 1rem) 1.5rem;
+    }
+}
