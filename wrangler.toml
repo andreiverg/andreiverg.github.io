@@ -4,3 +4,10 @@ compatibility_date = "2025-06-03"
 
 [site]
 bucket = "./"
+
+[build]
+command = ""
+upload.format = "service-worker"
+
+[build.upload]
+format = "service-worker"
