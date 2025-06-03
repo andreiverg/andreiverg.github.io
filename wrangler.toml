@@ -1,6 +1,0 @@
-name = "my-static-site"
-type = "javascript"
-compatibility_date = "2025-06-03"
-
-[site]
-bucket = "./"
