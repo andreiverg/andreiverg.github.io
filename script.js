@@ -47,4 +47,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         }
     });
+});
+
+// --- Design Gallery Video Modal ---
+document.addEventListener('DOMContentLoaded', function () {
+  const galleryVideos = document.querySelectorAll('.gallery-item .gallery-video');
+  const modalContainer = document.getElementById('video-modal-container');
+  const modalVideo = document.getElementById('modal-video');
+  const closeModalBtn = document.querySelector('.video-modal .close-modal');
+
+  if (galleryVideos.length && modalContainer && modalVideo && closeModalBtn) {
+    galleryVideos.forEach(video => {
+      video.parentElement.addEventListener('click', function () {
+        modalVideo.src = video.currentSrc || video.src;
+        modalVideo.poster = video.poster;
+        modalContainer.classList.add('active');
+        modalVideo.currentTime = 0;
+        modalVideo.play();
+      });
+    });
+
+    closeModalBtn.addEventListener('click', function () {
+      modalContainer.classList.remove('active');
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+      modalVideo.src = '';
+    });
+
+    // Close modal on background click
+    modalContainer.addEventListener('click', function (e) {
+      if (e.target === modalContainer) {
+        modalContainer.classList.remove('active');
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+        modalVideo.src = '';
+      }
+    });
+  }
 }); 
