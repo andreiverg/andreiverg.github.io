@@ -56,15 +56,20 @@
     </section>
     <section class="gallery-section">
       <div class="gallery-grid">
-        <!-- Video 1 -->
-        <div class="gallery-item">
+        <!-- Video 1: Until You Came Along -->
+        <div class="gallery-item" data-youtube="https://www.youtube.com/embed/6i-RGoOTA2k?si=sNKneP221um-sxOh">
           <span class="gallery-play-btn"><i class="fa-solid fa-play"></i></span>
-          <video class="gallery-video" src="videos/Until You Came Along-1.MP4" poster="images/thumbnail.png" preload="metadata"></video>
+          <img class="gallery-thumb" src="images/thumbnail.png" alt="Until You Came Along thumbnail">
         </div>
-        <!-- Video 2 -->
-        <div class="gallery-item">
+        <!-- Video 2: Wake Up I'm Done -->
+        <div class="gallery-item" data-youtube="https://www.youtube.com/embed/a-KddQw_cy8?si=Z2wXjHJSbJ5KkeIC">
           <span class="gallery-play-btn"><i class="fa-solid fa-play"></i></span>
-          <video class="gallery-video" src="videos/wake up im done.mp4" poster="images/thumbnail2.png" preload="metadata"></video>
+          <img class="gallery-thumb" src="images/thumbnail2.png" alt="Wake Up I'm Done thumbnail">
+        </div>
+        <!-- Video 3: New Video -->
+        <div class="gallery-item" data-youtube="https://www.youtube.com/embed/iQcfuzoPey0?si=6vbyw6fNeDMXcTZ5">
+          <span class="gallery-play-btn"><i class="fa-solid fa-play"></i></span>
+          <img class="gallery-thumb" src="images/thumbnail3.png" alt="New Video thumbnail">
         </div>
       </div>
     </section>
@@ -72,7 +77,9 @@
     <div class="modal-container" id="video-modal-container">
       <div class="video-modal" id="video-modal">
         <span class="close-modal">&times;</span>
-        <video id="modal-video" controls></video>
+        <div class="modal-iframe-wrapper">
+          <iframe id="modal-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </main>

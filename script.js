@@ -84,4 +84,37 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+});
+
+// --- Design Gallery YouTube Modal ---
+document.addEventListener('DOMContentLoaded', function () {
+  const galleryItems = document.querySelectorAll('.gallery-item[data-youtube]');
+  const modalContainer = document.getElementById('video-modal-container');
+  const modalIframe = document.getElementById('modal-iframe');
+  const closeModalBtn = document.querySelector('.video-modal .close-modal');
+
+  if (galleryItems.length && modalContainer && modalIframe && closeModalBtn) {
+    galleryItems.forEach(item => {
+      item.addEventListener('click', function () {
+        const youtubeUrl = item.getAttribute('data-youtube');
+        // Add autoplay param
+        const urlWithAutoplay = youtubeUrl.includes('?') ? youtubeUrl + '&autoplay=1' : youtubeUrl + '?autoplay=1';
+        modalIframe.src = urlWithAutoplay;
+        modalContainer.classList.add('active');
+      });
+    });
+
+    closeModalBtn.addEventListener('click', function () {
+      modalContainer.classList.remove('active');
+      modalIframe.src = '';
+    });
+
+    // Close modal on background click
+    modalContainer.addEventListener('click', function (e) {
+      if (e.target === modalContainer) {
+        modalContainer.classList.remove('active');
+        modalIframe.src = '';
+      }
+    });
+  }
 }); 
