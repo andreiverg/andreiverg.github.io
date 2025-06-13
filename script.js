@@ -174,74 +174,25 @@ document.addEventListener('DOMContentLoaded', function () {
   showSlide(0);
 });
 
-// --- Brianverg Photo Modal Slider ---
+// --- Brianverg Single Photo Modals ---
 document.addEventListener('DOMContentLoaded', function () {
-  const photoImages = [
-    'images/brianverg_1574403727_2182579112387130946_1633074026.jpg',
-    'images/brianverg_1558596791_2049980925078308329_1633074026.jpg',
-    'images/brianverg_1558596791_2049980925069948396_1633074026 (1).jpg'
-  ];
-  const trigger = document.getElementById('brianverg-photo-trigger');
-  const modalContainer = document.getElementById('photo-modal-container');
-  const modalImg = modalContainer ? modalContainer.querySelector('.modal-photo-image') : null;
-  const leftBtn = modalContainer ? modalContainer.querySelector('.slider-arrow-left') : null;
-  const rightBtn = modalContainer ? modalContainer.querySelector('.slider-arrow-right') : null;
-  const dots = modalContainer ? modalContainer.querySelectorAll('.slider-dot') : [];
-  const closeBtn = modalContainer ? modalContainer.querySelector('.close-modal') : null;
-  let current = 0;
-
-  function showModal(idx) {
-    if (!modalContainer) return;
-    modalContainer.classList.add('active');
-    showSlide(idx);
-  }
-  function closeModal() {
-    if (!modalContainer) return;
-    modalContainer.classList.remove('active');
-  }
-  function showSlide(idx) {
-    if (idx < 0) idx = photoImages.length - 1;
-    if (idx >= photoImages.length) idx = 0;
-    if (modalImg) modalImg.src = photoImages[idx];
-    dots.forEach(dot => dot.classList.remove('active'));
-    if (dots[idx]) dots[idx].classList.add('active');
-    current = idx;
-  }
-  if (trigger && modalContainer && modalImg) {
+  const photoTriggers = document.querySelectorAll('.gallery-photo');
+  photoTriggers.forEach(trigger => {
     trigger.addEventListener('click', function () {
-      showModal(0);
+      const idx = trigger.getAttribute('data-photo');
+      const modal = document.getElementById(`photo-modal-${idx}`);
+      if (modal) modal.classList.add('active');
     });
-    leftBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      showSlide(current - 1);
-    });
-    rightBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      showSlide(current + 1);
-    });
-    dots.forEach(dot => {
-      dot.addEventListener('click', function (e) {
-        e.stopPropagation();
-        showSlide(Number(dot.dataset.index));
-      });
-    });
+  });
+  [0,1,2].forEach(idx => {
+    const modal = document.getElementById(`photo-modal-${idx}`);
+    if (!modal) return;
+    const closeBtn = modal.querySelector('.close-modal');
     closeBtn.addEventListener('click', function () {
-      closeModal();
+      modal.classList.remove('active');
     });
-    modalContainer.addEventListener('click', function (e) {
-      if (e.target === modalContainer) closeModal();
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) modal.classList.remove('active');
     });
-    // Optional: swipe support for mobile
-    let startX = null;
-    modalImg.addEventListener('touchstart', function(e) {
-      startX = e.touches[0].clientX;
-    });
-    modalImg.addEventListener('touchend', function(e) {
-      if (startX === null) return;
-      let endX = e.changedTouches[0].clientX;
-      if (endX - startX > 40) showSlide(current - 1);
-      else if (startX - endX > 40) showSlide(current + 1);
-      startX = null;
-    });
-  }
+  });
 }); 
