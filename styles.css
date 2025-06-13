@@ -1262,7 +1262,7 @@ footer {
     }
 }
 
-/* Universal Modal Overlay Fix */
+/* --- MODAL CONTAINER: ENSURE THIS IS LAST FOR OVERRIDE --- */
 .modal-container {
     display: none;
     position: fixed;
