@@ -117,4 +117,131 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+});
+
+// --- Instagram-style Photo Slider ---
+document.addEventListener('DOMContentLoaded', function () {
+  const sliderImages = [
+    'images/brianverg_1574403727_2182579112387130946_1633074026.jpg',
+    'images/brianverg_1558596791_2049980925078308329_1633074026.jpg',
+    'images/brianverg_1558596791_2049980925069948396_1633074026 (1).jpg'
+  ];
+  const sliderPanel = document.querySelector('.gallery-slider-panel');
+  if (!sliderPanel) return;
+  const sliderImg = sliderPanel.querySelector('.slider-image');
+  const leftBtn = sliderPanel.querySelector('.slider-arrow-left');
+  const rightBtn = sliderPanel.querySelector('.slider-arrow-right');
+  const dots = sliderPanel.querySelectorAll('.slider-dot');
+  let current = 0;
+
+  function showSlide(idx) {
+    if (idx < 0) idx = sliderImages.length - 1;
+    if (idx >= sliderImages.length) idx = 0;
+    sliderImg.src = sliderImages[idx];
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[idx].classList.add('active');
+    current = idx;
+  }
+
+  leftBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showSlide(current - 1);
+  });
+  rightBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showSlide(current + 1);
+  });
+  dots.forEach(dot => {
+    dot.addEventListener('click', function(e) {
+      e.stopPropagation();
+      showSlide(Number(dot.dataset.index));
+    });
+  });
+
+  // Optional: swipe support for mobile
+  let startX = null;
+  sliderImg.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+  });
+  sliderImg.addEventListener('touchend', function(e) {
+    if (startX === null) return;
+    let endX = e.changedTouches[0].clientX;
+    if (endX - startX > 40) showSlide(current - 1);
+    else if (startX - endX > 40) showSlide(current + 1);
+    startX = null;
+  });
+
+  showSlide(0);
+});
+
+// --- Brianverg Photo Modal Slider ---
+document.addEventListener('DOMContentLoaded', function () {
+  const photoImages = [
+    'images/brianverg_1574403727_2182579112387130946_1633074026.jpg',
+    'images/brianverg_1558596791_2049980925078308329_1633074026.jpg',
+    'images/brianverg_1558596791_2049980925069948396_1633074026 (1).jpg'
+  ];
+  const trigger = document.getElementById('brianverg-photo-trigger');
+  const modalContainer = document.getElementById('photo-modal-container');
+  const modalImg = modalContainer ? modalContainer.querySelector('.modal-photo-image') : null;
+  const leftBtn = modalContainer ? modalContainer.querySelector('.slider-arrow-left') : null;
+  const rightBtn = modalContainer ? modalContainer.querySelector('.slider-arrow-right') : null;
+  const dots = modalContainer ? modalContainer.querySelectorAll('.slider-dot') : [];
+  const closeBtn = modalContainer ? modalContainer.querySelector('.close-modal') : null;
+  let current = 0;
+
+  function showModal(idx) {
+    if (!modalContainer) return;
+    modalContainer.classList.add('active');
+    showSlide(idx);
+  }
+  function closeModal() {
+    if (!modalContainer) return;
+    modalContainer.classList.remove('active');
+  }
+  function showSlide(idx) {
+    if (idx < 0) idx = photoImages.length - 1;
+    if (idx >= photoImages.length) idx = 0;
+    if (modalImg) modalImg.src = photoImages[idx];
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[idx]) dots[idx].classList.add('active');
+    current = idx;
+  }
+  if (trigger && modalContainer && modalImg) {
+    trigger.addEventListener('click', function () {
+      showModal(0);
+    });
+    leftBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showSlide(current - 1);
+    });
+    rightBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showSlide(current + 1);
+    });
+    dots.forEach(dot => {
+      dot.addEventListener('click', function (e) {
+        e.stopPropagation();
+        showSlide(Number(dot.dataset.index));
+      });
+    });
+    closeBtn.addEventListener('click', function () {
+      closeModal();
+    });
+    modalContainer.addEventListener('click', function (e) {
+      if (e.target === modalContainer) closeModal();
+    });
+    // Optional: swipe support for mobile
+    let startX = null;
+    modalImg.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+    });
+    modalImg.addEventListener('touchend', function(e) {
+      if (startX === null) return;
+      let endX = e.changedTouches[0].clientX;
+      if (endX - startX > 40) showSlide(current - 1);
+      else if (startX - endX > 40) showSlide(current + 1);
+      startX = null;
+    });
+  }
 }); 
