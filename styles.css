@@ -1028,10 +1028,10 @@ footer {
     display: flex;
 }
 .video-modal {
-    background: var(--background-light);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    padding: 2rem 2rem 1rem 2rem;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
     position: relative;
     max-width: 800px;
     width: 95vw;
@@ -1215,10 +1215,10 @@ footer {
 
 /* Single Photo Modal Styles */
 .photo-modal-single {
-    background: var(--background-light);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    padding: 2rem 2rem 1.5rem 2rem;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
     position: relative;
     max-width: 600px;
     width: 95vw;
