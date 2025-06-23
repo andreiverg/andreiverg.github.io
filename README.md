@@ -142,7 +142,7 @@ The website is fully responsive and optimized for:
 
 ## 🔗 Links
 
-- **Live Site**: [andreiverg.github.io](https://andreiverg.github.io)
+- **Live Site**: [andreiverg.github.io](https://johnvergara.net/)
 - **GitHub**: [@andreiverg](https://github.com/andreiverg)
 - **LinkedIn**: [John Andrei Vergara](https://www.linkedin.com/in/john-andrei-vergara-3b9921285/)
 - **Email**: andreivergara@outlook.co.nz
