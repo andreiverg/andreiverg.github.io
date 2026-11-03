@@ -1,0 +1,8 @@
+.qodo
+node_modules
+dist
+.DS_Store
+reference/
+.agents/
+.claude/
+skills-lock.json
