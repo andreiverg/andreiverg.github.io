@@ -3,10 +3,10 @@ type = "javascript"
 compatibility_date = "2025-06-03"
 
 [site]
-bucket = "./"
+bucket = "./dist"
 
 [build]
-command = ""
+command = "npm run build"
 upload.format = "service-worker"
 
 [build.upload]
