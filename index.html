@@ -2,225 +2,367 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Andrei Vergara — creative technologist working across code, motion, and photography. Based in Auckland, New Zealand.">
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="images/favicon/site.webmanifest">
-  <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#7B91D9">
-  <meta name="msapplication-TileColor" content="#1E2532">
-  <meta name="theme-color" content="#1E2532">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <meta name="theme-color" content="#e8e8e8">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter+Tight:wght@400..600&family=Roboto+Condensed:wght@500;600&display=swap">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/script.js"></script>
 
-  <link rel="stylesheet" href="https://andreiverg-github-io.pages.dev/styles.css">
-  <script src="script.js" defer></script>
-
-  <title>Portfolio</title>
+  <title>Andrei Vergara — Creative Technologist</title>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <nav>
-    <div class="left">
-      <a href="/">John Vergara</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- HERO — reference 1 -->
+  <header class="hero" id="top" data-hero>
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-bar">
+      <a href="#top" class="brand">Andrei<br>Vergara</a>
+      <nav class="hero-nav" aria-label="Primary">
+        <a href="#work">.Work</a>
+        <a href="#about">.About</a>
+        <a href="#contact">.Contact</a>
+      </nav>
+      <p class="hero-count">
+        <span data-hero-count>01</span> - 04
+        <span class="sep" aria-hidden="true">|</span>
+        <a href="#photography">All Photos</a>
+      </p>
     </div>
 
-    <div class="right">
-      <a href="/" class="active">
-        <i class="fa-solid fa-house"></i>
-        <span>Home</span>
-      </a>
+    <h1 class="sr-only">Andrei Vergara — creative technologist, motion editor and photographer in Auckland</h1>
 
-      <a href="/projects.html">
-        <i class="fa-solid fa-chart-line"></i>
-        <span>Projects</span>
-      </a>
-      <a href="/design.html">
-        <i class="fa-solid fa-palette"></i>
-        <span>Design</span>
-      </a>
-      
-      <a href="https://github.com/andreiverg" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-github"></i>
-        <span>Github</span>
-      </a>
-      
-      <a href="https://www.linkedin.com/in/john-andrei-vergara-3b9921285/" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-linkedin"></i>
-        <span>Linkedin</span>
-      </a>
-      
-      <a href="#contact">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Contact</span>
-      </a>
+    <!-- Tiles: positions are in a 1440×900 design space, in the gallery's rotated frame (u, v). -->
+    <ul class="hero-tiles" aria-label="Featured photographs">
+      <li><button type="button" class="hero-tile" data-tile data-u="199" data-v="34" data-w="791" data-h="460"
+        data-lightbox="image" data-src="/images/photo-landscape-01.jpg">
+        <img src="/images/photo-landscape-01.jpg" alt="Coastal landscape at sunset, Mount Maunganui">
+      </button></li>
+      <li><button type="button" class="hero-tile" data-tile data-u="245" data-v="-346" data-w="454" data-h="271"
+        data-lightbox="image" data-src="/images/photo-portrait-02.jpg">
+        <img src="/images/photo-portrait-02.jpg" alt="Portrait on the beach at sunset, Mount Maunganui">
+      </button></li>
+      <li><button type="button" class="hero-tile" data-tile data-u="-400" data-v="-10" data-w="387" data-h="211" data-focus="0.5,0.32"
+        data-lightbox="image" data-src="/images/photo-portrait-01.jpg">
+        <img src="/images/photo-portrait-01.jpg" alt="Portrait taken at golden hour, Mount Maunganui">
+      </button></li>
+      <li><button type="button" class="hero-tile" data-tile data-u="-386" data-v="211" data-w="308" data-h="170" data-focus="0.55,0.55"
+        data-lightbox="image" data-src="/images/about-me.jpg">
+        <img src="/images/about-me.jpg" alt="Andrei lying in the grass with a camera at golden hour">
+      </button></li>
+    </ul>
+
+    <span class="hero-cross" aria-hidden="true" data-hero-cross>
+      <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <path d="M17 2.5 C 16.2 9, 16.2 25, 17 31.5"/>
+        <path d="M2.5 17.6 C 9 16.4, 25 16.4, 31.5 17.6"/>
+      </svg>
+    </span>
+
+    <div class="hero-social">
+      <a href="https://github.com/andreiverg" target="_blank" rel="noopener noreferrer" aria-label="GitHub">Gh</a>
+      <a href="https://www.linkedin.com/in/john-andrei-vergara-3b9921285/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">In</a>
     </div>
-  </nav>
 
-  <main>
-    <!-- SECTION 1: Hero -->
-    <section class="hero-section">
-      <div class="text">
-        <div class="greeting">Hi, I'm <span>{John}</span></div>
-        <p>I'm Andrei, a Computer Science and Statistics student with a strong interest in data analysis, algorithms, and problem-solving.</p>
+    <p class="hero-title" aria-hidden="true"><span class="dot">.</span>SUN<br>SET</p>
 
-        <div class="links">
-          <a href="#skills">
-            <i class="fa-solid fa-code"></i>
-            <span>Skills</span>
-          </a>
-          
-          <a href="#testimony">
-            <i class="fa-solid fa-pen"></i>
-            <span>About me</span>
-          </a>
-          
-          <a href="#contact">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Contact</span>
-          </a>
+    <div class="hero-synopsis">
+      <h2>Project Synopsis</h2>
+      <p>Golden hour portraits and coastline, shot on the beach at Mount Maunganui.</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- WORK -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Selected work</p>
+          <h2>Code, motion, and image&nbsp;— the three things I keep coming back to.</h2>
         </div>
-      </div>
 
-      <div class="headshot">
-        <img src="images/hero-headshot.webp" alt="john doe headshot">
+        <!-- Build -->
+        <article class="work-block" id="build">
+          <p class="block-label" data-reveal>.01 Build</p>
+          <div class="build-row">
+            <div class="build-copy" data-reveal>
+              <h3>This Portfolio</h3>
+              <p>
+                A fully custom site — no template. Hand-built in HTML, CSS and
+                JavaScript, with a WebGL photo gallery bent onto a sphere and a
+                3D photo drum, bundled with Vite and deployed to Cloudflare's
+                edge network.
+              </p>
+              <p class="aside-note">You're looking at it right now.</p>
+              <a href="https://github.com/andreiverg/andreiverg.github.io" target="_blank" rel="noopener noreferrer" class="text-link">View source</a>
+            </div>
+            <dl class="meta-list" data-reveal>
+              <div><dt>Role</dt><dd>Design &amp; development</dd></div>
+              <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, WebGL</dd></div>
+              <div><dt>Hosting</dt><dd>Cloudflare Pages</dd></div>
+              <div><dt>Status</dt><dd>Live</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <!-- Motion -->
+        <article class="work-block" id="motion">
+          <p class="block-label" data-reveal>.02 Motion</p>
+          <div class="block-intro" data-reveal>
+            <h3>Edits &amp; Motion Work</h3>
+            <p>A handful of edits — pacing, colour, and rhythm work across cinematic and commercial styles.</p>
+          </div>
+
+          <div class="motion-grid">
+            <button type="button" class="motion-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/6i-RGoOTA2k" data-reveal>
+              <span class="motion-frame">
+                <img src="https://i.ytimg.com/vi/6i-RGoOTA2k/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+                <span class="play" aria-hidden="true"></span>
+              </span>
+              <span class="motion-caption"><span class="title">Until You Came Along</span><span class="tag">Cinematic Edit</span></span>
+            </button>
+            <button type="button" class="motion-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/a-KddQw_cy8" data-reveal>
+              <span class="motion-frame">
+                <img src="https://i.ytimg.com/vi/a-KddQw_cy8/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+                <span class="play" aria-hidden="true"></span>
+              </span>
+              <span class="motion-caption"><span class="title">Devsuoa</span><span class="tag">Motion Edit</span></span>
+            </button>
+            <button type="button" class="motion-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/iQcfuzoPey0" data-reveal>
+              <span class="motion-frame">
+                <img src="https://i.ytimg.com/vi/iQcfuzoPey0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                <span class="play" aria-hidden="true"></span>
+              </span>
+              <span class="motion-caption"><span class="title">Creative Work</span><span class="tag">Creative Edit</span></span>
+            </button>
+            <button type="button" class="motion-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/NkTPQlAamBs" data-reveal>
+              <span class="motion-frame">
+                <img src="https://i.ytimg.com/vi/NkTPQlAamBs/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+                <span class="play" aria-hidden="true"></span>
+              </span>
+              <span class="motion-caption"><span class="title">Advertisement Edit</span><span class="tag">Commercial Edit</span></span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Photography -->
+        <article class="work-block" id="photography">
+          <p class="block-label" data-reveal>.03 Photography</p>
+          <div class="block-intro" data-reveal>
+            <h3>Photography</h3>
+            <p>Events and portraits for student clubs around Auckland — and golden hour, whenever the light is good.</p>
+          </div>
+
+          <div class="gallery-list">
+            <section class="gallery-row" data-reveal>
+              <header class="gallery-info">
+                <h4>Golden Hour</h4>
+                <p>Personal · Mount Maunganui</p>
+              </header>
+              <div class="gallery-shots">
+                <button type="button" class="gallery-shot is-lead" data-lightbox="image" data-src="/images/photo-landscape-01.jpg">
+                  <img src="/images/photo-landscape-01.jpg" alt="Coastal landscape at sunset, Mount Maunganui" loading="lazy" style="object-position:50% 50%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/photo-portrait-01.jpg">
+                  <img src="/images/photo-portrait-01.jpg" alt="Portrait taken at golden hour, Mount Maunganui" loading="lazy" style="object-position:50% 30%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/photo-portrait-02.jpg">
+                  <img src="/images/photo-portrait-02.jpg" alt="Portrait on the beach at sunset, Mount Maunganui" loading="lazy" style="object-position:50% 40%">
+                </button>
+              </div>
+            </section>
+            <section class="gallery-row" data-reveal>
+              <header class="gallery-info">
+                <h4>HKSS x DEVS Squid Games</h4>
+                <p>Event · 151 photos</p>
+                <a href="https://andreivergara.pixieset.com/hkssxdevssquidgames/" class="text-link" target="_blank" rel="noopener noreferrer">View full gallery</a>
+              </header>
+              <div class="gallery-shots">
+                <button type="button" class="gallery-shot is-lead" data-lightbox="image" data-src="/images/work/squid-games-04.jpg">
+                  <img src="/images/work/squid-games-04.jpg" alt="A guard in a red jumpsuit during a Squid Games round" loading="lazy" style="object-position:50% 50%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/squid-games-01.jpg">
+                  <img src="/images/work/squid-games-01.jpg" alt="A dalgona candy on a sheet of paper" loading="lazy" style="object-position:50% 50%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/squid-games-02.jpg">
+                  <img src="/images/work/squid-games-02.jpg" alt="A player smiling and making a peace sign" loading="lazy" style="object-position:50% 35%">
+                </button>
+              </div>
+            </section>
+            <section class="gallery-row" data-reveal>
+              <header class="gallery-info">
+                <h4>DEVS x Team 27 Casino Night</h4>
+                <p>Event · 35 photos</p>
+                <a href="https://andreivergara.pixieset.com/devsxteam27casinonight2026/" class="text-link" target="_blank" rel="noopener noreferrer">View full gallery</a>
+              </header>
+              <div class="gallery-shots">
+                <button type="button" class="gallery-shot is-lead" data-lightbox="image" data-src="/images/work/casino-night-02.jpg">
+                  <img src="/images/work/casino-night-02.jpg" alt="Players reacting at a poker table" loading="lazy" style="object-position:50% 40%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/casino-night-01.jpg">
+                  <img src="/images/work/casino-night-01.jpg" alt="Poker chips and cards on a felt table" loading="lazy" style="object-position:50% 50%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/casino-night-03.jpg">
+                  <img src="/images/work/casino-night-03.jpg" alt="A player laughing at the card table" loading="lazy" style="object-position:50% 40%">
+                </button>
+              </div>
+            </section>
+            <section class="gallery-row" data-reveal>
+              <header class="gallery-info">
+                <h4>DEVS x Tansa HumanGPT</h4>
+                <p>Event · 50 photos</p>
+                <a href="https://andreivergara.pixieset.com/devsxtansahumangpt2026/" class="text-link" target="_blank" rel="noopener noreferrer">View full gallery</a>
+              </header>
+              <div class="gallery-shots">
+                <button type="button" class="gallery-shot is-lead" data-lightbox="image" data-src="/images/work/humangpt-01.jpg">
+                  <img src="/images/work/humangpt-01.jpg" alt="A participant holding up a fan of cards" loading="lazy" style="object-position:50% 40%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/humangpt-02.jpg">
+                  <img src="/images/work/humangpt-02.jpg" alt="Close-up of hands on a laptop" loading="lazy" style="object-position:50% 50%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/humangpt-04.jpg">
+                  <img src="/images/work/humangpt-04.jpg" alt="A participant writing at a table" loading="lazy" style="object-position:50% 40%">
+                </button>
+              </div>
+            </section>
+            <section class="gallery-row" data-reveal>
+              <header class="gallery-info">
+                <h4>Janna’s Graduation</h4>
+                <p>Portraits · 117 photos</p>
+                <a href="https://andreivergara.pixieset.com/jannasgraduation/" class="text-link" target="_blank" rel="noopener noreferrer">View full gallery</a>
+              </header>
+              <div class="gallery-shots">
+                <button type="button" class="gallery-shot is-lead" data-lightbox="image" data-src="/images/work/graduation-02.jpg">
+                  <img src="/images/work/graduation-02.jpg" alt="Graduate and friends making a heart shape" loading="lazy" style="object-position:50% 40%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/graduation-03.jpg">
+                  <img src="/images/work/graduation-03.jpg" alt="Graduate with friends holding flowers" loading="lazy" style="object-position:50% 40%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/graduation-04.jpg">
+                  <img src="/images/work/graduation-04.jpg" alt="Graduate in a gown with a bouquet" loading="lazy" style="object-position:50% 30%">
+                </button>
+              </div>
+            </section>
+            <section class="gallery-row" data-reveal>
+              <header class="gallery-info">
+                <h4>UACC x DEVS</h4>
+                <p>Event · 38 photos</p>
+                <a href="https://andreivergara.pixieset.com/uaccxdevs/" class="text-link" target="_blank" rel="noopener noreferrer">View full gallery</a>
+              </header>
+              <div class="gallery-shots">
+                <button type="button" class="gallery-shot is-lead" data-lightbox="image" data-src="/images/work/uacc-04.jpg">
+                  <img src="/images/work/uacc-04.jpg" alt="A full lecture theatre during the workshop" loading="lazy" style="object-position:50% 50%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/uacc-01.jpg">
+                  <img src="/images/work/uacc-01.jpg" alt="Two attendees in conversation" loading="lazy" style="object-position:50% 35%">
+                </button>
+                <button type="button" class="gallery-shot" data-lightbox="image" data-src="/images/work/uacc-02.jpg">
+                  <img src="/images/work/uacc-02.jpg" alt="An attendee working on a laptop" loading="lazy" style="object-position:50% 40%">
+                </button>
+              </div>
+            </section>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- SECTION 2: Skills -->
-    <section id="skills" class="skills-section">
-      <h2>Skills</h2>
-      <div class="text">
-        Here are my list of skills i've developed over the years!
-      </div>
-
-      <div class="cells">
-        <div class="cell">
-          <img src="images/html-logo.webp" alt="html logo">
-          <span>HTML</span>
+    <!-- ABOUT -->
+    <section id="about" class="section section-grey">
+      <div class="wrap about-grid">
+        <div class="about-photo" data-reveal>
+          <img src="/images/about-me.jpg" alt="Andrei lying in the grass with a camera at golden hour" loading="lazy">
         </div>
-        
-        <div class="cell">
-          <img src="images/css-logo.webp" alt="css logo">
-          <span>CSS</span>
-        </div>
-        
-        <div class="cell">
-          <img src="images/javascript-logo.webp" alt="javascript logo">
-          <span>Java</span>
-        </div>
-        
-        <div class="cell">
-          <img src="images/node-logo.webp" alt="node logo">
-          <span>RStudio</span>
-        </div>
-        
-        <div class="cell">
-          <img src="images/react-logo.webp" alt="react logo">
-          <span>Python</span>
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">About</p>
+          <p class="about-lead">
+            I'm Andrei — a creative technologist based in Auckland, New Zealand.
+          </p>
+          <p>
+            I like the space where design, motion, and code overlap: figuring
+            out how something should look and feel, then actually building it.
+          </p>
+          <p>
+            Alongside that, I'm completing a BSc in Computer Science &amp;
+            Statistics at the University of Auckland, which is where the more
+            analytical, structured side of how I work comes from.
+          </p>
+          <p>
+            When I'm not writing code or cutting footage, I'm usually out
+            shooting photos or chasing good light.
+          </p>
+          <dl class="meta-list compact">
+            <div><dt>Tools &amp; languages</dt><dd>HTML · CSS · JavaScript · Python · R</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: Testimony -->
-    <section id="testimony" class="testimony-section">
-      <h2>About me</h2>
+    <!-- CONTACT — reference 2 -->
+    <section id="contact" class="connect">
+      <p class="connect-eyebrow">Get in touch</p>
+      <h2 class="connect-title">Let’s connect</h2>
 
-      <div class="group">
-        <div class="person-details">
-          <img src="images/testimony-headshot.webp">
-          <p>John Andrei Vergara</p>
-          <p>BSs in CS + Stats</p>
-        </div>
-
-        <div class="text">
-          As a Computer Science and Statistics student at the University of Auckland, I'm passionate about leveraging data to solve real-world problems. My academic journey has equipped me with a strong foundation in both theoretical concepts and practical applications.
-
-          <br><br>
-
-          I specialize in data analysis and machine learning, with experience in:
-          <br>
-          • Statistical modeling and data visualization using R and Python
-          <br>
-          • Full-stack web development with modern technologies
-          <br>
-          • Algorithm design and optimization
-          <br><br>
-
-          Currently, I'm focusing on projects that combine statistical analysis with software engineering to create meaningful insights and solutions. When I'm not coding, you can find me exploring new technologies or contributing to open-source projects.
+      <div class="ring-tilt" aria-hidden="true">
+        <div class="ring-stage" data-ring-stage>
+          <div class="ring" data-ring>
+            <img src="/images/work/squid-games-06.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/photo-portrait-01.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/work/humangpt-03.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/work/casino-night-04.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/photo-landscape-01.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/work/squid-games-05.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/work/uacc-03.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/work/graduation-01.jpg" alt="" loading="lazy" draggable="false">
+            <img src="/images/work/squid-games-03.jpg" alt="" loading="lazy" draggable="false">
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- SECTION 4: Contact -->
-    <section id="contact" class="contact-section">
-      <h2>Contact</h2>
-
-      <div class="group">
-        <div class="text">
-          Want to get in contact with me? Fill in this form and I'll get back to you as soon as possible.
-        </div>
-
-        <form action="https://formspree.io/f/xzzgbobv" method="POST">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="_replyto" required>
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" cols="30" rows="10" required></textarea>
-
-          <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
-          <input type="text" name="_gotcha" style="display:none">
-
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
+      <form class="connect-form" action="https://formspree.io/f/xzzgbobv" method="POST" novalidate>
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email*" required autocomplete="email">
+        <input type="hidden" name="message" value="Wants to connect — sent from the portfolio contact form.">
+        <input type="hidden" name="_subject" value="New portfolio connection">
+        <input type="text" name="_gotcha" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Submit</button>
+      </form>
+      <p class="connect-note" role="status" aria-live="polite" data-form-status>
+        Or write to me at <a href="mailto:andreivergara@outlook.co.nz">andreivergara@outlook.co.nz</a>
+      </p>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>John Vergara</h3>
-        <p>Computer Science & Statistics Student</p>
-        <p>University of Auckland</p>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <a href="/">Home</a>
-        <a href="/projects.html">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Connect</h3>
-        <div class="social-links">
-          <a href="https://github.com/andreiverg" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/john-andrei-vergara-3b9921285/" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a href="mailto:andreivergara@outlook.co.nz">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-      </div>
+  <footer class="site-footer">
+    <a href="#top" class="brand">Andrei<br>Vergara</a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#work">.Work</a>
+      <a href="#about">.About</a>
+      <a href="#contact">.Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://github.com/andreiverg" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/john-andrei-vergara-3b9921285/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:andreivergara@outlook.co.nz">Email</a>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 John Vergara. All rights reserved.</p>
-    </div>
+    <p class="footer-copy">&copy; <span id="year">2026</span> Andrei Vergara</p>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Media viewer">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">Close</button>
+    <div class="lightbox-media" id="lightbox-media"></div>
+  </div>
 </body>
 </html>
