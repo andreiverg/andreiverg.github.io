@@ -1669,3 +1669,21 @@ ul { list-style: none; }
   .pv-switch button small { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .pv-enter { animation: none; } .pv-switch-pill { transition: none; } }
+
+/* About — Download CV button on the name card */
+.sb-cv-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-top: 24px;
+  padding: 12px 22px 13px 18px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--pink), var(--coral));
+  color: #fff;
+  font-size: 14.5px; font-weight: 600;
+  box-shadow: 0 8px 20px rgba(240, 56, 107, 0.28);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, filter 0.2s ease;
+}
+.sb-cv-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sb-cv-btn small { font-size: 11px; font-weight: 600; opacity: 0.8; letter-spacing: 0.06em; }
+.sb-cv-btn:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 12px 26px rgba(240, 56, 107, 0.38); filter: brightness(1.05); }
+.sb-cv-btn:hover svg { animation: cv-drop 0.7s ease; }
+@keyframes cv-drop { 40% { transform: translateY(3px); } }
