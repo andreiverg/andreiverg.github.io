@@ -91,5 +91,32 @@ if (grid && photo && frame) {
   });
 
   frame.addEventListener('dblclick', () => reset(true));
+
+  // Easter egg: click the photo 10 times in a row and it gets a bit fed up.
+  let clicks = 0;
+  let clickTimer = 0;
+  let bubble = null;
+  frame.addEventListener('click', (e) => {
+    if (e.target.closest('[data-h]')) return;
+    clicks++;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => { clicks = 0; }, 1500);
+    if (clicks < 10) return;
+    clicks = 0;
+    frame.classList.remove('is-annoyed');
+    void frame.offsetWidth;
+    frame.classList.add('is-annoyed');
+    if (!bubble) {
+      bubble = document.createElement('span');
+      bubble.className = 'ab-annoyed';
+      bubble.setAttribute('role', 'status');
+      frame.appendChild(bubble);
+    }
+    bubble.textContent = 'ok that’s enough.';
+    bubble.classList.remove('is-on');
+    void bubble.offsetWidth;
+    bubble.classList.add('is-on');
+    setTimeout(() => { bubble.classList.remove('is-on'); frame.classList.remove('is-annoyed'); }, 2600);
+  });
   window.addEventListener('resize', () => { if (base) { base = null; reset(false); } });
 }

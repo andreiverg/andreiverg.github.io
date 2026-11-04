@@ -10,6 +10,7 @@
 import { initTheme } from './theme.js';
 import { initCompose } from './compose.js';
 import { initDino } from './dino.js';
+import { initSecrets } from './secrets.js';
 
 const root = document.documentElement;
 const landing = document.querySelector('[data-landing]');
@@ -345,6 +346,7 @@ root.classList.add('is-building');
 initTheme();
 initCompose();
 initDino();
+initSecrets();
 
 /* ------------------------------------------------------------ idle hint
    If someone lingers on the landing page, nudge them toward the dino game.

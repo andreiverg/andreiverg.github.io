@@ -57,9 +57,11 @@ function createGame() {
   win.setAttribute('aria-label', 'Secret dino game');
   win.innerHTML = `
     <header class="dino-head">
-      <span class="dino-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="dino-dots">
+        <button type="button" class="dino-close" aria-label="Close game"></button>
+        <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </span>
       <span class="dino-title">dino.exe</span>
-      <button type="button" class="dino-close" aria-label="Close game">×</button>
     </header>
     <canvas class="dino-canvas" width="${W * 2}" height="${H * 2}" tabindex="0" aria-label="Runner game. Press space to jump."></canvas>
     <footer class="dino-foot">Space / ↑ / tap to jump · Esc to close</footer>`;
