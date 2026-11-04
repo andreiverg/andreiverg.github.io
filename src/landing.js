@@ -9,6 +9,7 @@
 
 import { initTheme } from './theme.js';
 import { initCompose } from './compose.js';
+import { initDino } from './dino.js';
 
 const root = document.documentElement;
 const landing = document.querySelector('[data-landing]');
@@ -314,3 +315,4 @@ root.classList.add('is-building');
 
 initTheme();
 initCompose();
+initDino();

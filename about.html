@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter+Tight:wght@400..600&family=Roboto+Condensed:wght@500;600&display=swap">
 
   <link rel="stylesheet" href="/styles.css">
-  <script type="module" src="/src/page.js"></script>
+  <script type="module" src="/src/about.js"></script>
 
   <title>About &amp; Resume — Andrei Vergara</title>
 </head>
@@ -43,11 +43,11 @@
 
       <div class="ab-grid">
         <figure class="ab-photo" data-reveal>
-          <div class="ab-frame">
-            <img src="/images/about-me.jpg" alt="Andrei lying in the grass with a camera at golden hour">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <div class="ab-frame" data-resize>
+            <img src="/images/about-me.jpg" alt="Andrei lying in the grass with a camera at golden hour" draggable="false">
+            <i data-h="-1,-1" style="cursor:nwse-resize"></i><i data-h="0,-1" style="cursor:ns-resize"></i><i data-h="1,-1" style="cursor:nesw-resize"></i><i data-h="-1,0" style="cursor:ew-resize"></i><i data-h="1,0" style="cursor:ew-resize"></i><i data-h="-1,1" style="cursor:nesw-resize"></i><i data-h="0,1" style="cursor:ns-resize"></i><i data-h="1,1" style="cursor:nwse-resize"></i>
           </div>
-          <figcaption class="ab-size" aria-hidden="true">Andrei.jpg</figcaption>
+          <figcaption class="ab-size" aria-hidden="true"><span>Andrei.jpg</span> <em data-resize-label>· drag a handle to resize</em></figcaption>
         </figure>
 
         <div class="ab-intro" data-reveal>

@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter+Tight:wght@400..600&family=Roboto+Condensed:wght@500;600&display=swap">
 
   <link rel="stylesheet" href="/styles.css">
-  <script type="module" src="/src/page.js"></script>
+  <script type="module" src="/src/projects.js"></script>
 
   <title>Projects — Andrei Vergara</title>
 </head>
@@ -46,10 +46,12 @@
   </header>
 
   <main id="main">
-    <section class="section section-tight">
+    <section class="section section-tight fd-section">
       <div class="wrap">
+        <div class="finder" data-finder></div>
+        <div class="projects-fallback">
         <!-- Capstone: two parts -->
-        <article class="work-block" id="capstone">
+        <article class="work-block" id="capstone-static">
           <p class="block-label" data-reveal>.01 Capstone</p>
           <header class="cap-intro" data-reveal>
             <h3>COMPSCI 399 Capstone</h3>
@@ -127,7 +129,7 @@
         </article>
 
         <!-- Build -->
-        <article class="work-block" id="build">
+        <article class="work-block" id="build-static">
           <p class="block-label" data-reveal>.02 Build</p>
           <div class="build-row">
             <div class="build-copy" data-reveal>
@@ -173,6 +175,7 @@
           </div>
         </article>
 
+        </div>
       </div>
     </section>
   </main>
