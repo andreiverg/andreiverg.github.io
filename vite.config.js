@@ -11,7 +11,6 @@ export default defineConfig({
         projects: page('projects'),
         photography: page('photography'),
         about: page('about'),
-        contact: page('contact'),
         secret: page('secret'),
       },
     },
