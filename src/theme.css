@@ -124,3 +124,21 @@ body { transition: background-color 0.35s ease, color 0.35s ease; }
 @media (prefers-reduced-motion: reduce) {
   body, .theme-toggle, .theme-toggle svg { transition: none; }
 }
+
+/* Gentle drift for the corner glow: small, slow, never leaves the corner.
+   Uses `translate`/`scale` (not `transform`) so it can't clash with other effects. */
+@keyframes glow-drift-a {
+  0%, 100% { translate: 0 0; scale: 1; }
+  33%      { translate: -2.5vmax 1.5vmax; scale: 1.04; }
+  66%      { translate: 1.5vmax 2.5vmax; scale: 0.97; }
+}
+@keyframes glow-drift-b {
+  0%, 100% { translate: 0 0; scale: 1; }
+  40%      { translate: 2vmax -2vmax; scale: 1.05; }
+  75%      { translate: -1.5vmax 1vmax; scale: 0.98; }
+}
+.glow::before, .blob-warm, .sb::before { animation: glow-drift-a 22s ease-in-out infinite; }
+.glow::after, .blob-blue { animation: glow-drift-b 28s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .glow::before, .glow::after, .blob-warm, .blob-blue, .sb::before { animation: none; }
+}

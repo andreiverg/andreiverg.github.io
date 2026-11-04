@@ -14,7 +14,7 @@
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter+Tight:wght@400..600&family=Roboto+Condensed:wght@500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Yellowtail&family=Inter+Tight:wght@400..600&family=Roboto+Condensed:wght@500;600&display=swap">
 
   <link rel="stylesheet" href="/styles.css">
   <script type="module" src="/src/about.js"></script>
@@ -24,209 +24,152 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <main id="main" class="about-page">
-    <section class="ab-sheet">
-      <div class="page-bar ab-bar">
-        <a href="/" class="brand">Andrei<br>Vergara</a>
-        <nav class="page-nav" aria-label="Primary">
+  <main id="main" class="sb">
+    <div class="page-bar sb-bar">
+      <a href="/" class="brand">Andrei<br>Vergara</a>
+      <nav class="page-nav" aria-label="Primary">
           <a href="/projects">.Projects</a>
-          <a href="/photography">.Photography</a>
-          <a href="/social">.Social</a>
+          <a href="/photography">.Photo &amp; Video</a>
           <a href="/about" aria-current="page">.About</a>
           <a href="mailto:andreivergara@outlook.co.nz" data-compose>.Contact</a>
         </nav>
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
         <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
       </button>
-      </div>
+    </div>
 
-      <div class="ab-grid">
-        <figure class="ab-photo" data-reveal>
+    <!-- 1. Name card + polaroid -->
+    <section class="sb-hero">
+      <span class="sb-cv" aria-hidden="true">Curriculum Vitae</span>
+      <span class="sb-year" aria-hidden="true">2026 <i>↘</i></span>
+
+      <div class="ab-grid sb-grid">
+        <div class="sb-card" data-reveal>
+          <svg class="sb-clip" viewBox="0 0 40 90" aria-hidden="true"><path d="M14 80V18a8 8 0 0 1 16 0v52a12 12 0 0 1-24 0V24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
+          <p class="sb-script">Name:</p>
+          <h1 class="sb-name">Andrei Vergara</h1>
+          <p class="sb-script">Introduce myself:</p>
+          <p>I’m studying Computer Science and Statistics at the University of Auckland, finishing in 2026. I build software across the stack, from parsers and APIs to data visualisation, and I like the space where design, motion and code overlap.</p>
+          <p>Outside class I lead marketing and media for the Developers Society, and create TikTok and Instagram content about student life for the University. When I’m not writing code or cutting footage, I’m out shooting photos for student clubs.</p>
+          <span class="sb-sticker sb-sticker-devs" aria-hidden="true"><b>DEVS</b> Marketing Lead</span>
+        </div>
+
+        <figure class="ab-photo sb-polaroid" data-reveal>
+          <span class="sb-hello" aria-hidden="true"><b>HELLO</b><small>my name is</small></span>
+          <span class="sb-pin" aria-hidden="true"></span>
           <div class="ab-frame" data-resize>
             <img src="/images/about-me.jpg" alt="Andrei lying in the grass with a camera at golden hour" draggable="false">
             <i data-h="-1,-1" style="cursor:nwse-resize"></i><i data-h="0,-1" style="cursor:ns-resize"></i><i data-h="1,-1" style="cursor:nesw-resize"></i><i data-h="-1,0" style="cursor:ew-resize"></i><i data-h="1,0" style="cursor:ew-resize"></i><i data-h="-1,1" style="cursor:nesw-resize"></i><i data-h="0,1" style="cursor:ns-resize"></i><i data-h="1,1" style="cursor:nwse-resize"></i>
           </div>
-          <figcaption class="ab-size" aria-hidden="true"><span>Andrei.jpg</span> <em data-resize-label>· drag a handle to resize</em></figcaption>
+          <figcaption class="sb-caption">
+            <span>/andreiverg</span>
+            <a href="https://github.com/andreiverg" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+            <a href="https://www.linkedin.com/in/john-andrei-vergara-3b9921285/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+          </figcaption>
+          <p class="sb-resize-hint" aria-hidden="true"><span data-resize-label>· drag a corner to resize</span></p>
         </figure>
+      </div>
+    </section>
 
-        <div class="ab-intro" data-reveal>
-          <h1 class="ab-display">Hello</h1>
-          <p class="ab-lead">Hi, I’m Andrei Vergara.</p>
-          <p>I’m studying Computer Science and Statistics at the University of Auckland, finishing in 2026. I build software across the stack, from parsers and APIs to data visualisation, and I like the space where design, motion and code overlap.</p>
-          <p>Outside class I lead marketing and media for the Developers Society, and create TikTok and Instagram content about student life for the University.</p>
-          <p>When I’m not writing code or cutting footage, I’m usually out shooting photos for student clubs or chasing good light.</p>
+    <!-- 1b. Social profiles, right under the intro -->
+    <section class="sb-find" id="social">
+      <header class="sb-find-head" data-reveal>
+        <h2 class="sb-head">Find me online</h2>
+        <span class="sb-note">↘ say hi</span>
+      </header>
+      <div class="sb-profiles">
+          <a class="sb-profile" href="https://www.linkedin.com/in/john-andrei-vergara-3b9921285/" target="_blank" rel="noopener noreferrer" style="--r:-3deg" data-reveal>
+            <span class="sb-profile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></span>
+            <span class="sb-profile-name">LinkedIn</span>
+            <span class="sb-profile-note">work history & study</span>
+            <span class="sb-profile-handle">john-andrei-vergara <i aria-hidden="true">↗</i></span>
+          </a>
+          <a class="sb-profile" href="https://github.com/andreiverg" target="_blank" rel="noopener noreferrer" style="--r:2.5deg" data-reveal>
+            <span class="sb-profile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></span>
+            <span class="sb-profile-name">GitHub</span>
+            <span class="sb-profile-note">code & side projects</span>
+            <span class="sb-profile-handle">andreiverg <i aria-hidden="true">↗</i></span>
+          </a>
+          <a class="sb-profile" href="https://andreivergara.pixieset.com/" target="_blank" rel="noopener noreferrer" style="--r:-1.5deg" data-reveal>
+            <span class="sb-profile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3.2l1.6-2.5h6.4L16.8 7H20a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <span class="sb-profile-name">Pixieset</span>
+            <span class="sb-profile-note">full event galleries</span>
+            <span class="sb-profile-handle">andreivergara <i aria-hidden="true">↗</i></span>
+          </a>
+          <a class="sb-profile" href="mailto:andreivergara@outlook.co.nz" data-compose style="--r:3deg" data-reveal>
+            <span class="sb-profile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <span class="sb-profile-name">Email</span>
+            <span class="sb-profile-note">say hi!</span>
+            <span class="sb-profile-handle">andreivergara@outlook.co.nz <i aria-hidden="true">↗</i></span>
+          </a>
+        </div>
+    </section>
 
-          <h2 class="ab-head">Education</h2>
-          <p class="ab-strong">Bachelor of Science, Computer Science &amp; Statistics</p>
-          <p>The University of Auckland · Expected to finish in 2026</p>
-          <p class="ab-award"><span aria-hidden="true">✦</span> Certificate of Distinction in Data Technologies</p>
+    <div class="sb-tear" aria-hidden="true"></div>
+
+    <!-- 2. Education + skills | experience sheet -->
+    <section class="sb-body">
+      <div class="sb-left">
+        <div class="sb-block" data-reveal>
+          <h2 class="sb-head">Education</h2>
+          <ul class="sb-edu">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/><path d="M22 9v6"/></svg><div><b>BSc, Computer Science &amp; Statistics</b><span>The University of Auckland · expected 2026</span></div></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/><path d="M22 9v6"/></svg><div><b>Certificate of Distinction</b><span>Data Technologies</span></div></li>
+          </ul>
+          <p class="sb-small"><b>Coursework:</b> Algorithms &amp; Data Structures / Data Technologies / Object-Oriented Programming / Computer Systems / Data Analysis / Statistics</p>
         </div>
 
-        <div class="ab-side" data-reveal>
-          <h2 class="ab-head">Skills</h2>
-          <p class="ab-sub">Languages</p>
-          <ul class="ab-tiles" aria-label="Languages">
-            <li style="--tc:#4b8bbe" title="Python"><span aria-hidden="true">Py</span><span class="sr-only">Python</span></li>
-            <li style="--tc:#f89820" title="Java"><span aria-hidden="true">Jv</span><span class="sr-only">Java</span></li>
-            <li style="--tc:#2f7bd1" title="R"><span aria-hidden="true">R</span><span class="sr-only">R</span></li>
-            <li style="--tc:#e44d26" title="HTML"><span aria-hidden="true">HTML</span><span class="sr-only">HTML</span></li>
-            <li style="--tc:#2965f1" title="CSS"><span aria-hidden="true">CSS</span><span class="sr-only">CSS</span></li>
-            <li style="--tc:#8892bf" title="PHP"><span aria-hidden="true">PHP</span><span class="sr-only">PHP</span></li>
-          </ul>
-          <p class="ab-sub">Creative</p>
-          <ul class="ab-tiles" aria-label="Creative tools">
-            <li style="--tc:#31a8ff" title="Photoshop"><span aria-hidden="true">Ps</span><span class="sr-only">Photoshop</span></li>
-            <li style="--tc:#ff9a00" title="Illustrator"><span aria-hidden="true">Ai</span><span class="sr-only">Illustrator</span></li>
-            <li style="--tc:#9999ff" title="After Effects"><span aria-hidden="true">Ae</span><span class="sr-only">After Effects</span></li>
-            <li style="--tc:#31a8ff" title="Lightroom"><span aria-hidden="true">Lr</span><span class="sr-only">Lightroom</span></li>
-            <li style="--tc:#a259ff" title="Figma"><span aria-hidden="true">Fi</span><span class="sr-only">Figma</span></li>
-          </ul>
-          <dl class="ab-skills">
-            <div><dt>Frameworks &amp; tools</dt><dd>FastAPI, Next.js, Git/GitHub, Pandas, Tableau, Figma</dd></div>
-            <div><dt>Data &amp; APIs</dt><dd>JSON, REST APIs, data analysis, Claude, ChatGPT</dd></div>
-            <div><dt>Productivity</dt><dd>Excel, PowerPoint, Word, Google Workspace</dd></div>
-          </dl>
+        <div class="sb-block" data-reveal>
+          <h2 class="sb-head">Software Skills</h2>
+          <div class="sb-skillrow"><ul class="sb-dots" aria-label="Creative tools"><li style="--tc:#31a8ff" title="Photoshop"><span aria-hidden="true">Ps</span><span class="sr-only">Photoshop</span></li><li style="--tc:#ff9a00" title="Illustrator"><span aria-hidden="true">Ai</span><span class="sr-only">Illustrator</span></li><li style="--tc:#9999ff" title="After Effects"><span aria-hidden="true">Ae</span><span class="sr-only">After Effects</span></li><li style="--tc:#31a8ff" title="Lightroom"><span aria-hidden="true">Lr</span><span class="sr-only">Lightroom</span></li><li style="--tc:#a259ff" title="Figma"><span aria-hidden="true">Fi</span><span class="sr-only">Figma</span></li></ul><span class="sb-note">↖ creative</span></div>
+          <div class="sb-skillrow"><ul class="sb-dots" aria-label="Languages"><li style="--tc:#4b8bbe" title="Python"><span aria-hidden="true">Py</span><span class="sr-only">Python</span></li><li style="--tc:#f89820" title="Java"><span aria-hidden="true">Jv</span><span class="sr-only">Java</span></li><li style="--tc:#2f7bd1" title="R"><span aria-hidden="true">R</span><span class="sr-only">R</span></li><li style="--tc:#e44d26" title="HTML"><span aria-hidden="true">HTML</span><span class="sr-only">HTML</span></li><li style="--tc:#2965f1" title="CSS"><span aria-hidden="true">CSS</span><span class="sr-only">CSS</span></li><li style="--tc:#8892bf" title="PHP"><span aria-hidden="true">PHP</span><span class="sr-only">PHP</span></li></ul><span class="sb-note">↖ code</span></div>
+          <span class="sb-sticker sb-sticker-dino" aria-hidden="true">psst… type <b>dino</b></span>
+        </div>
+
+        <div class="sb-block" data-reveal>
+          <h2 class="sb-head">Tools &amp; Data</h2>
+          <p class="sb-slashes"><b>FastAPI</b> / <b>Next.js</b> / Git &amp; GitHub / Pandas / Tableau / Figma</p>
+          <p class="sb-slashes">JSON / REST APIs / <b>Data analysis</b> / Claude / ChatGPT</p>
+          <p class="sb-slashes">Excel / PowerPoint / Word / Google Workspace</p>
+        </div>
+
+        <div class="sb-block" data-reveal>
+          <h2 class="sb-head">Clubs</h2>
+          <p class="sb-slashes"><b>Developers Society</b> / Web3 Club / Computer Science Club / Debating Club / Data Science Club / Google Developers</p>
         </div>
       </div>
-    </section>
 
-    <section class="ab-strip" aria-label="Creative technologist">
-      <span class="ab-tear ab-tear-top" aria-hidden="true"></span>
-      <div class="ab-marquee" aria-hidden="true">
-        <div class="ab-track"><span>Creative Technologist</span><b>✦</b><span>Code</span><b>✦</b><span>Motion</span><b>✦</b><span>Photography</span><b>✦</b><span>Creative Technologist</span><b>✦</b><span>Code</span><b>✦</b><span>Motion</span><b>✦</b><span>Photography</span><b>✦</b></div>
-      </div>
-      <div class="ab-cut" data-reveal>
-        <img src="/images/about-me.jpg" alt="" loading="lazy">
-      </div>
-      <span class="ab-tear ab-tear-bottom" aria-hidden="true"></span>
-    </section>
+      <div class="sb-right">
+        <article class="sb-sheet" data-reveal>
+          <span class="sb-tape" aria-hidden="true"></span>
+          <h2 class="sb-sheet-title">Experience <small>(since 2021)</small></h2>
+          <ol class="sb-timeline">
+            <li style="--c:var(--pink)"><span class="sb-date">2025 – now</span><b>The University of Auckland</b><i>Student Content Creator</i><p>TikTok and Instagram content about student life and campus culture.</p></li>
+            <li style="--c:var(--coral)"><span class="sb-date">UoA</span><b>Developers Society</b><i>Marketing Lead</i><p>Marketing, photography and video for technical events and campaigns.</p></li>
+            <li style="--c:#6c63ff"><span class="sb-date">UoA</span><b>Web3UOA</b><i>Marketing Executive, Media</i><p>Promotional campaigns and social content for Web3 student events.</p></li>
+            <li style="--c:#2f9e74"><span class="sb-date">2021 – now</span><b>Kmart St Lukes</b><i>Team Member</i><p>Oversees the decant department; K-Award for outstanding attitude and performance.</p></li>
+          </ol>
+        </article>
 
-    <section class="ab-sheet ab-resume" aria-label="Resume">
-      <div class="ab-resume-inner">
-        <p class="ab-kicker">Resume</p>
-        <section class="ab-sec" data-reveal>
-          <h3 class="ab-head">Experience</h3>
-          <div class="ab-entries">
-            <article class="ab-entry">
-              <p class="ab-when">Aug 2025 – Present</p>
-              <div>
-                <h4>Student Content Creator</h4>
-                <p class="ab-org">The University of Auckland</p>
-                <ul>
-                <li>Develop and produce TikTok and Instagram content that highlights student life and campus culture.</li>
-                <li>Strengthen the University’s online presence and its connection with current and prospective students.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="ab-entry">
-              <p class="ab-when">Nov 2021 – Present</p>
-              <div>
-                <h4>Team Member</h4>
-                <p class="ab-org">Kmart St Lukes</p>
-                <ul>
-                <li>Oversee the decant department, improving operational efficiency in collaboration with management.</li>
-                <li>Trained across multiple departments, including Customer Greeter and Checkout.</li>
-                <li>Recognised with multiple awards, including the K-Award for outstanding attitude and performance.</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="ab-sec" data-reveal>
-          <h3 class="ab-head">Leadership</h3>
-          <div class="ab-entries">
-            <article class="ab-entry">
-              <p class="ab-when">University of Auckland</p>
-              <div>
-                <h4>Marketing Lead</h4>
-                <p class="ab-org">Developers Society (DEVS)</p>
-                <ul>
-                <li>Lead marketing and media for the Developers Society, promoting technical events and student activities.</li>
-                <li>Produce photography, video and visual content for events and promotional campaigns.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="ab-entry">
-              <p class="ab-when">University of Auckland</p>
-              <div>
-                <h4>Marketing Executive, Media</h4>
-                <p class="ab-org">Web3UOA</p>
-                <ul>
-                <li>Develop promotional campaigns and social media content for Web3-focused student events.</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="ab-sec" data-reveal>
-          <h3 class="ab-head">Projects</h3>
-          <div class="ab-entries">
-            <article class="ab-entry">
-              <p class="ab-when">COMPSCI 399</p>
-              <div>
-                <h4>Capstone: Roster Converter &amp; Triage, Please</h4>
-                <p class="ab-org">Team 15 (Team SOS) · client RosterLab · <a href="/projects" class="ab-link">See both projects</a> · <a href="https://www.credits.connorknoetze.com/" target="_blank" rel="noopener noreferrer" class="ab-link">Team credits</a></p>
-              <p class="ab-tags">Next.js · TypeScript · Python · FastAPI · Gemini · Git</p>
-                <ul>
-                <li><b>Roster Converter:</b> developed a full-stack app that turns healthcare rosters (Excel, CSV or images) into personal calendar files, as part of a software engineering team.</li>
-                <li>Investigated failures caused by inconsistent roster formats and iterated on the parsing rules, then added a Google Gemini fallback for rosters the rules couldn’t handle. The parser reads 25 of 28 client rosters without AI.</li>
-                <li><b>Triage, Please:</b> a healthcare-themed browser game for waiting rooms, with timed shifts, patient triage and a custom scenario creator. <a href="https://rosterlab-icu-triage-game-627f.onrender.com/" target="_blank" rel="noopener noreferrer" class="ab-link">Play it</a></li>
-                <li>Collaborated through Git branches, pull requests, code reviews and team integration.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="ab-entry">
-              <p class="ab-when">STATS 220</p>
-              <div>
-                <h4>Interactive Data Visualisation Website</h4>
-                <p class="ab-org">Course project</p>
-              <p class="ab-tags">R · R Markdown · tidyverse</p>
-                <ul>
-                <li>Cleaned and transformed raw gym-training data with tidyverse, creating derived metrics such as training volume to explore how bodyweight, experience and goals relate to performance.</li>
-                <li>Built an interactive data visualisation website in R and R Markdown from data collected through Google Forms and Sheets.</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-        <section class="ab-sec" data-reveal>
-          <h3 class="ab-head">Studies</h3>
-          <div class="ab-entries">
-            <article class="ab-entry">
-              <p class="ab-when">Expected 2026</p>
-              <div>
-                <h4>BSc, Computer Science &amp; Statistics</h4>
-                <p class="ab-org">The University of Auckland</p>
-                <ul>
-                <li><b>Coursework:</b> Algorithms &amp; Data Structures, Data Technologies, Object-Oriented Programming, Computer Systems, Data Analysis, Statistics.</li>
-                <li><b>Certificate:</b> Certificate of Distinction in Data Technologies.</li>
-                <li><b>Clubs:</b> Developers Society, Web3 Club, Computer Science Club, Debating Club, Data Science Club, Google Developers.</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
+        <article class="sb-note-card" data-reveal>
+          <span class="sb-tape sb-tape-2" aria-hidden="true"></span>
+          <h2 class="sb-sheet-title sb-sheet-title-sm">Projects</h2>
+          <ul>
+            <li><b>COMPSCI 399 Capstone</b> · Roster Converter &amp; Triage, Please, for RosterLab. <a href="/projects#capstone" class="ab-link">See both</a> · <a href="https://www.credits.connorknoetze.com/" target="_blank" rel="noopener noreferrer" class="ab-link">Team credits</a></li>
+            <li><b>STATS 220</b> · Interactive data visualisation website in R and R Markdown.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="ab-sheet ab-sheet-end">
-      <div class="ab-cta" data-reveal>
-        <p>Want to work on something together?</p>
-        <a href="mailto:andreivergara@outlook.co.nz" class="connect-cta" data-compose>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"/><path d="M4 7l8 6 8-6"/></svg>
-          Write me an email
-        </a>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
     <a href="/" class="brand">Andrei<br>Vergara</a>
     <nav class="footer-nav" aria-label="Footer">
       <a href="/projects">.Projects</a>
-      <a href="/photography">.Photography</a>
-      <a href="/social">.Social</a>
+      <a href="/photography">.Photo &amp; Video</a>
       <a href="/about">.About</a>
       <a href="mailto:andreivergara@outlook.co.nz" data-compose>.Contact</a>
     </nav>

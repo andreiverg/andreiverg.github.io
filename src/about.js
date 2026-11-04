@@ -15,7 +15,7 @@ const grid = document.querySelector('.ab-grid');
 const photo = document.querySelector('.ab-photo');
 const frame = document.querySelector('[data-resize]');
 const label = document.querySelector('[data-resize-label]');
-const HINT = '· drag a handle to resize';
+const HINT = '· drag a corner to resize';
 
 if (grid && photo && frame) {
   let base = null; // natural photo size + layout info, measured at scale 1
@@ -39,8 +39,9 @@ if (grid && photo && frame) {
       photo.style.width = `${w}px`;
     } else {
       // keep the other columns' proportions; only the photo column becomes fixed
-      const rest = base.cols === 3 ? 'minmax(0, 1.25fr) minmax(0, 1fr)' : 'minmax(0, 1.2fr)';
-      grid.style.gridTemplateColumns = `${w}px ${rest}`;
+      const rest = 'minmax(0, 1.3fr)';
+      const photoLast = grid.lastElementChild === photo;
+      grid.style.gridTemplateColumns = photoLast ? `${rest} ${w}px` : `${w}px ${rest}`;
     }
     frame.classList.toggle('is-resized', s !== 1);
     if (label) label.textContent = `· ${Math.round(w)} × ${Math.round(base.h * s)}`;

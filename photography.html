@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="/styles.css">
   <script type="module" src="/script.js"></script>
 
-  <title>Photography — Andrei Vergara</title>
+  <title>Photo &amp; Video — Andrei Vergara</title>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
@@ -34,8 +34,7 @@
       <a href="/" class="brand">Andrei<br>Vergara</a>
       <nav class="hero-nav" aria-label="Primary">
         <a href="/projects">.Projects</a>
-        <a href="/photography" aria-current="page">.Photography</a>
-        <a href="/social">.Social</a>
+        <a href="/photography" aria-current="page">.Photo &amp; Video</a>
         <a href="/about">.About</a>
         <a href="mailto:andreivergara@outlook.co.nz" data-compose>.Contact</a>
       </nav>
@@ -94,7 +93,15 @@
 
   <main id="main">
     <!-- WORK -->
-    <section id="photography" class="section pg-section">
+    <div class="pv-switch-wrap">
+      <div class="pv-switch" role="tablist" aria-label="Show photos or videos" data-pv-tabs>
+        <span class="pv-switch-pill" aria-hidden="true"></span>
+        <button type="button" role="tab" id="tab-photos" aria-controls="photography" aria-selected="true" data-tab="photography">Photos <small>6 galleries</small></button>
+        <button type="button" role="tab" id="tab-videos" aria-controls="videography" aria-selected="false" data-tab="videography">Videos <small>4 edits</small></button>
+      </div>
+    </div>
+
+    <section id="photography" class="section pg-section" role="tabpanel" aria-labelledby="tab-photos">
       <div class="wrap">
         <h2 class="pg-heading" data-reveal>Andrei’s Photography</h2>
 
@@ -204,6 +211,31 @@
       </div>
     </section>
 
+    <section id="videography" class="section pg-section pv-section" role="tabpanel" aria-labelledby="tab-videos">
+      <div class="wrap">
+        <h2 class="pg-heading" data-reveal>Andrei’s Videography</h2>
+        <p class="pv-intro" data-reveal>Edits for club socials and campaigns: pacing, colour and rhythm across cinematic, motion and commercial styles.</p>
+        <div class="pv-grid">
+          <button type="button" class="pv-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/6i-RGoOTA2k" data-reveal>
+            <span class="pv-frame"><img src="https://i.ytimg.com/vi/6i-RGoOTA2k/maxresdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></span>
+            <span class="pv-cap"><span class="pv-title">Until You Came Along</span><span class="pv-tag">Cinematic Edit</span></span>
+          </button>
+          <button type="button" class="pv-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/a-KddQw_cy8" data-reveal>
+            <span class="pv-frame"><img src="https://i.ytimg.com/vi/a-KddQw_cy8/maxresdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></span>
+            <span class="pv-cap"><span class="pv-title">Devsuoa</span><span class="pv-tag">Motion Edit</span></span>
+          </button>
+          <button type="button" class="pv-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/iQcfuzoPey0" data-reveal>
+            <span class="pv-frame"><img src="https://i.ytimg.com/vi/iQcfuzoPey0/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></span>
+            <span class="pv-cap"><span class="pv-title">Creative Work</span><span class="pv-tag">Creative Edit</span></span>
+          </button>
+          <button type="button" class="pv-item" data-lightbox="youtube" data-src="https://www.youtube.com/embed/NkTPQlAamBs" data-reveal>
+            <span class="pv-frame"><img src="https://i.ytimg.com/vi/NkTPQlAamBs/maxresdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></span>
+            <span class="pv-cap"><span class="pv-title">Advertisement Edit</span><span class="pv-tag">Commercial Edit</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT — reference 2 -->
     <section id="contact" class="connect">
       <p class="connect-eyebrow">Get in touch</p>
@@ -237,8 +269,7 @@
     <a href="/" class="brand">Andrei<br>Vergara</a>
     <nav class="footer-nav" aria-label="Footer">
       <a href="/projects">.Projects</a>
-      <a href="/photography">.Photography</a>
-      <a href="/social">.Social</a>
+      <a href="/photography">.Photo &amp; Video</a>
       <a href="/about">.About</a>
       <a href="mailto:andreivergara@outlook.co.nz" data-compose>.Contact</a>
     </nav>

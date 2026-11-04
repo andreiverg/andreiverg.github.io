@@ -10,7 +10,6 @@ export default defineConfig({
         main: page('index'),
         projects: page('projects'),
         photography: page('photography'),
-        social: page('social'),
         about: page('about'),
         secret: page('secret'),
       },
