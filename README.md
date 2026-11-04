@@ -1,173 +1,97 @@
-# John Andrei Vergara - Portfolio Website
+# Andrei Vergara — Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Computer Science and Statistics student at the University of Auckland. Built with vanilla HTML, CSS, and JavaScript, deployed on Cloudflare Pages.
+My personal portfolio: projects, photography and video, and an about page with my CV. I'm studying Computer Science and Statistics at the University of Auckland, finishing in 2026.
 
-## 🌟 About Me
+**Live site: [johnvergara.net](https://johnvergara.net/)**
 
-I'm John Andrei Vergara, a Computer Science and Statistics student passionate about data analysis, algorithms, and problem-solving. I specialize in:
+It's a fully custom site with no template, hand-built in HTML, CSS and JavaScript and bundled with Vite.
 
-- **Data Analysis & Machine Learning**: Statistical modeling and data visualization using R and Python
-- **Full-Stack Development**: Modern web technologies and software engineering
-- **Algorithm Design**: Optimization and computational problem-solving
+## Pages
 
-## 🚀 Features
+| Page | File | What's on it |
+| --- | --- | --- |
+| Home | `index.html` | A landing page that builds itself on every visit, as if three people were designing it live in Figma |
+| Projects | `projects.html` | Stacked paper folder tabs that open into project write-ups, with each path kept in the URL hash (`#capstone/triage-please`) so links can be shared |
+| Photo & Video | `photography.html` | A WebGL photo gallery bent onto a sphere, plus photo galleries and video edits behind a Photos / Videos switch |
+| About | `about.html` | CV, a resizable photo, a CV download and links to find me online |
 
-### Home Page (`index.html`)
-- **Hero Section**: Personal introduction with professional headshot
-- **Skills Showcase**: Visual display of technical skills (HTML, CSS, Java, RStudio, Python)
-- **About Me**: Detailed background and academic journey
-- **Contact Form**: Integrated contact form using Formspree
-- **Responsive Navigation**: Clean navigation with social media links
+Every page also has light and dark themes, a Gmail-style contact window and a few hidden extras.
 
-### Projects Page (`projects.html`)
-- **Data Science Projects**: Machine learning and data analysis projects
-- **Software Development**: Full-stack applications and mobile apps
-- **Project Cards**: Detailed project descriptions with technology tags
-- **Live Demo Links**: Direct links to project demonstrations
+## Featured projects
 
-### Design Page (`design.html`)
-- **Design Portfolio**: Showcase of design work and creative projects
+- **Roster Converter** (COMPSCI 399 capstone, for RosterLab): turns healthcare rosters into personal calendar files.
+- **Triage, Please** (COMPSCI 399 capstone, for RosterLab): a pixel-art browser game about running a medical centre's front desk.
+- **Glass UI**: a frosted-glass theme for BetterDiscord.
 
-## 🛠️ Technologies Used
+## Tech
 
-### Frontend
-- **HTML5**: Semantic markup and structure
-- **CSS3**: Modern styling with custom animations and responsive design
-- **JavaScript**: Interactive functionality and dynamic content
-- **Font Awesome**: Icon library for UI elements
-- **Google Fonts**: Typography (Poppins, Space Mono)
+- **Site:** HTML, CSS and JavaScript, with no UI framework
+- **Graphics:** WebGL and CSS 3D
+- **Build:** [Vite](https://vite.dev/)
+- **Contact form:** [Formspree](https://formspree.io/)
+- **Hosting:** Cloudflare Pages
 
-### Deployment & Hosting
-- **Cloudflare Pages**: Static site hosting
-- **Cloudflare Workers**: Edge computing for enhanced performance
-- **Formspree**: Contact form handling
+## Running it locally
 
-### Development Tools
-- **Wrangler**: Cloudflare Workers development tool
-- **Git**: Version control
+You'll need Node.js 22 (see `.node-version`).
 
-## 📁 Project Structure
-
-```
-andreiverg.github.io/
-├── index.html              # Home page
-├── projects.html           # Projects showcase
-├── design.html             # Design portfolio
-├── styles.css              # Main stylesheet
-├── script.js               # JavaScript functionality
-├── images/                 # Image assets
-│   ├── favicon/           # Favicon files
-│   ├── hero-headshot.webp # Profile photo
-│   └── *.webp             # Skill logos and other images
-├── videos/                 # Video content
-├── workers-site/           # Cloudflare Workers
-│   └── index.js           # Worker script
-├── wrangler.toml          # Cloudflare configuration
-├── _headers               # Custom headers
-├── _redirects             # URL redirects
-├── _routes.json           # Routing configuration
-└── .nojekyll              # GitHub Pages configuration
+```bash
+git clone https://github.com/andreiverg/andreiverg.github.io.git
+cd andreiverg.github.io
+npm install
+npm run dev
 ```
 
-## 🚀 Getting Started
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the Vite dev server |
+| `npm run build` | Builds the site into `dist/` |
+| `npm run preview` | Serves the production build locally |
 
-### Prerequisites
-- A modern web browser
-- Git (for version control)
-- Node.js (optional, for local development)
+## Project structure
 
-### Local Development
+```
+├── index.html            # Home
+├── projects.html         # Projects
+├── photography.html      # Photo & Video
+├── about.html            # About & CV
+├── styles.css            # Main stylesheet
+├── script.js             # Entry script for Photo & Video
+├── src/
+│   ├── landing.js/.css   # Self-building landing page
+│   ├── projects.js       # Folder tabs and all project content
+│   ├── hero-gallery.js   # WebGL sphere gallery
+│   ├── connect-ring.js   # 3D photo drum
+│   ├── photo-tabs.js     # Photos / Videos switch
+│   ├── about.js          # About page behaviour
+│   ├── page.js           # Shared setup for Projects and About
+│   ├── site.js           # Reveal on scroll, lightbox, footer year
+│   ├── compose.js/.css   # Contact window
+│   └── theme.js/.css     # Light and dark themes
+├── public/               # Copied as is into the build
+│   ├── images/           # Photos, project screenshots, favicons
+│   ├── files/            # Downloadable CV
+│   ├── og.jpg            # Social share preview image
+│   └── _headers, _redirects, _routes.json   # Cloudflare config
+├── vite.config.js        # Lists each page as a build entry
+└── wrangler.toml         # Cloudflare config
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/andreiverg/andreiverg.github.io.git
-   cd andreiverg.github.io
-   ```
+### Common edits
 
-2. **Open in your browser**
-   ```bash
-   # Using Python (if installed)
-   python -m http.server 8000
-   
-   # Using Node.js (if installed)
-   npx serve .
-   
-   # Or simply open index.html in your browser
-   ```
+- **Add or edit a project:** update the `TREE` object in `src/projects.js`. Add a `gallery` to a project to show screenshots. The write-ups in `projects.html` are the no-JavaScript fallback, so keep them in sync.
+- **Add a page:** create the HTML file and add it to `rollupOptions.input` in `vite.config.js`.
+- **Add images:** put them in `public/images/` and reference them from the site root, for example `/images/work/photo.jpg`.
 
-3. **View the site**
-   Navigate to `http://localhost:8000` in your browser
+## Deployment
 
-### Deployment
+The site is hosted on Cloudflare Pages:
 
-This site is deployed on **Cloudflare Pages** with the following configuration:
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
 
-- **Build Command**: None (static site)
-- **Build Output Directory**: Root directory
-- **Framework Preset**: None
-- **Environment Variables**: Configured in Cloudflare dashboard
+## Contact
 
-## 🔧 Configuration
-
-### Contact Form
-The contact form uses Formspree for email handling. To update the form endpoint:
-
-1. Create a new form at [Formspree](https://formspree.io)
-2. Update the form action in `index.html`:
-   ```html
-   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-
-### Cloudflare Workers
-The site uses Cloudflare Workers for enhanced performance. Configuration is in `wrangler.toml`.
-
-### Custom Headers
-Custom HTTP headers are configured in `_headers` for security and performance.
-
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-- Desktop computers
-- Tablets
-- Mobile devices
-- Various screen sizes and orientations
-
-## 🎨 Design Features
-
-- **Modern UI**: Clean, professional design with smooth animations
-- **Dark/Light Theme**: Adaptive color scheme
-- **Interactive Elements**: Hover effects and smooth transitions
-- **Accessibility**: Semantic HTML and ARIA labels
-- **Performance**: Optimized images and minimal dependencies
-
-## 🔗 Links
-
-- **Live Site**: [andreiverg.github.io](https://johnvergara.net/)
-- **GitHub**: [@andreiverg](https://github.com/andreiverg)
-- **LinkedIn**: [John Andrei Vergara](https://www.linkedin.com/in/john-andrei-vergara-3b9921285/)
-- **Email**: andreivergara@outlook.co.nz
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-While this is a personal portfolio site, suggestions and feedback are welcome! Feel free to:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📞 Contact
-
-For questions, collaborations, or just to say hello:
-
-- **Email**: andreivergara@outlook.co.nz
-- **LinkedIn**: [John Andrei Vergara](https://www.linkedin.com/in/john-andrei-vergara-3b9921285/)
-- **GitHub**: [@andreiverg](https://github.com/andreiverg)
-
----
-
-*Built with ❤️ by John Andrei Vergara* 
+- **Email:** andreivergara@outlook.co.nz
+- **LinkedIn:** [John Andrei Vergara](https://www.linkedin.com/in/john-andrei-vergara-3b9921285/)
+- **GitHub:** [@andreiverg](https://github.com/andreiverg)
