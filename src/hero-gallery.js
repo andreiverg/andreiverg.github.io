@@ -16,6 +16,7 @@ const CENTER_OFFSET = { x: 8, y: 8 }; // sphere centre vs. viewport centre (desi
 const PAN_LIMIT = { u: 520, v: 380 };
 // On-screen extent of the bent cluster above/below its centre, at scale 1.
 const CLUSTER_EXTENT = { up: 310, down: 400 };
+const CORNER_RADIUS = 16; // design px
 
 const VERT = `
 attribute vec2 a_pos;
@@ -30,9 +31,16 @@ uniform vec2 u_res;
 uniform vec2 u_center;
 uniform vec4 u_uv;
 varying vec2 v_uv;
+varying vec2 v_local; // position inside the tile, design px from its centre
+varying vec2 v_half;  // half the tile size, design px
+varying float v_aa;   // ~1 screen px, in design px
 
 void main() {
-  vec2 local = (a_pos - 0.5) * u_rect.zw * u_grow * mix(0.92, 1.0, u_spread);
+  vec2 size = u_rect.zw * u_grow * mix(0.92, 1.0, u_spread);
+  vec2 local = (a_pos - 0.5) * size;
+  v_local = local;
+  v_half = size * 0.5;
+  v_aa = 1.25 / u_scale;
   vec2 p = (u_rect.xy + u_offset) * u_spread + local;
   float c = cos(u_angle);
   float s = sin(u_angle);
@@ -48,10 +56,20 @@ const FRAG = `
 precision mediump float;
 uniform sampler2D u_tex;
 uniform float u_alpha;
+uniform float u_radius;
 varying vec2 v_uv;
+varying vec2 v_local;
+varying vec2 v_half;
+varying float v_aa;
 void main() {
+  // rounded-rectangle mask (signed distance), anti-aliased over ~1 screen px
+  float r = min(u_radius, min(v_half.x, v_half.y));
+  vec2 d = abs(v_local) - (v_half - r);
+  float dist = length(max(d, 0.0)) + min(max(d.x, d.y), 0.0) - r;
+  float mask = 1.0 - smoothstep(-v_aa, 0.0, dist);
   vec4 c = texture2D(u_tex, v_uv);
-  gl_FragColor = vec4(c.rgb * u_alpha, u_alpha);
+  float a = u_alpha * mask;
+  gl_FragColor = vec4(c.rgb * a, a);
 }`;
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -163,7 +181,7 @@ export function initHeroGallery(hero) {
 
   const U = {};
   ['u_rect', 'u_offset', 'u_angle', 'u_scale', 'u_spread', 'u_grow', 'u_horizon',
-    'u_res', 'u_center', 'u_uv', 'u_tex', 'u_alpha'].forEach((n) => {
+    'u_res', 'u_center', 'u_uv', 'u_tex', 'u_alpha', 'u_radius'].forEach((n) => {
     U[n] = gl.getUniformLocation(program, n);
   });
 
@@ -369,6 +387,7 @@ export function initHeroGallery(hero) {
     gl.uniform2f(U.u_center, view.cx, view.cy);
     gl.uniform2f(U.u_offset, pan.u + parallax.u, pan.v + parallax.v);
     gl.uniform1i(U.u_tex, 0);
+    gl.uniform1f(U.u_radius, CORNER_RADIUS);
     gl.activeTexture(gl.TEXTURE0);
 
     tiles.forEach((t, i) => {

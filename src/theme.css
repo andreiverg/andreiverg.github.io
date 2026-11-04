@@ -1,0 +1,125 @@
+@import url('./compose.css');
+
+/* ==========================================================================
+   Shared theme — light (white) and dark, warm palette from reference 4.
+   html[data-theme] is set before first paint by the inline script in <head>.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f6f5f4;        /* quiet panels: about, footer, image placeholders */
+  --ink: #111111;
+  --ink-soft: #1d1d1d;
+  --muted: #5f5d5c;
+  --faint: #a19e9c;
+  --line: #ebe9e8;
+  --line-strong: #d6d3d1;
+  --on-ink: #ffffff;         /* text on an ink-filled button */
+  --scrim: rgba(255, 255, 255, 0.96);
+
+  --pink: #ff3d7f;
+  --coral: #ff6a5c;
+  --peach: #ffa45c;
+  --accent: #f0386b;
+  --glow-a: rgba(255, 61, 127, 0.55);
+  --glow-b: rgba(255, 164, 92, 0.55);
+  --glow-c: rgba(255, 106, 92, 0.35);
+
+  --word-a: #121212;          /* gradient across the landing word (ref 4) */
+  --word-b: #2b1210;
+  --word-c: #8a1f2b;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0c0d;
+  --surface: #161617;
+  --ink: #f3f1ef;
+  --ink-soft: #e4e1de;
+  --muted: #a6a29f;
+  --faint: #6f6c6a;
+  --line: #242425;
+  --line-strong: #353536;
+  --on-ink: #0c0c0d;
+  --scrim: rgba(12, 12, 13, 0.96);
+
+  --accent: #ff5c86;
+  --glow-a: rgba(255, 61, 127, 0.42);
+  --glow-b: rgba(255, 140, 70, 0.38);
+  --glow-c: rgba(255, 106, 92, 0.28);
+
+  --word-a: #f6f4f2;
+  --word-b: #f3dcd6;
+  --word-c: #ff8f86;
+}
+
+html { background: var(--bg); }
+body { transition: background-color 0.35s ease, color 0.35s ease; }
+
+/* Warm colour field (ref 4), reused behind every page header */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 98%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 98%);
+}
+.glow::before,
+.glow::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+}
+.glow::before {
+  width: 70vmax; height: 56vmax;
+  right: -22vmax; top: -26vmax;
+  background:
+    radial-gradient(closest-side at 45% 52%, var(--glow-a), transparent 72%),
+    radial-gradient(closest-side at 60% 78%, var(--glow-c), transparent 80%);
+}
+.glow::after {
+  width: 46vmax; height: 40vmax;
+  right: -12vmax; top: 6vmax;
+  background: radial-gradient(closest-side, var(--glow-b), transparent 75%);
+}
+
+/* Light / dark switch */
+.theme-toggle {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.theme-toggle:hover { border-color: var(--ink); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle svg {
+  grid-area: 1 / 1;
+  width: 16px; height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.theme-toggle .moon { opacity: 0; transform: rotate(-60deg) scale(0.6); }
+[data-theme="dark"] .theme-toggle .sun { opacity: 0; transform: rotate(60deg) scale(0.6); }
+[data-theme="dark"] .theme-toggle .moon { opacity: 1; transform: none; }
+@media (pointer: coarse) {
+  .theme-toggle::after { content: ""; position: absolute; inset: -6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body, .theme-toggle, .theme-toggle svg { transition: none; }
+}

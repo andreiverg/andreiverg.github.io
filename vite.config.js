@@ -1,12 +1,18 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'node:path';
 
+const page = (name) => resolve(import.meta.dirname, `${name}.html`);
+
 export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(import.meta.dirname, 'index.html'),
-        secret: resolve(import.meta.dirname, 'secret.html'),
+        main: page('index'),
+        projects: page('projects'),
+        photography: page('photography'),
+        social: page('social'),
+        about: page('about'),
+        secret: page('secret'),
       },
     },
   },
