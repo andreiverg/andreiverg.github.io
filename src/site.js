@@ -72,8 +72,10 @@ export function initLightbox() {
     lastFocused?.focus({ preventScroll: true });
   }
 
-  document.querySelectorAll('[data-lightbox]').forEach((trigger) => {
-    trigger.addEventListener('click', () => open(trigger));
+  // Delegated so triggers rendered later (the projects folder view) work too.
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest?.('[data-lightbox]');
+    if (trigger) open(trigger);
   });
   closeBtn.addEventListener('click', close);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target === media) close(); });

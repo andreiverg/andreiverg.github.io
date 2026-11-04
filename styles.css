@@ -1219,6 +1219,30 @@ ul { list-style: none; }
 .ft-sheet .fd-facts > div { border-color: var(--ft-line); }
 .ft-sheet .fd-file-body p { color: color-mix(in srgb, var(--ink) 72%, transparent); }
 
+/* screenshots on an open file: one full-width shot, then a grid */
+.ft-gallery {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 2.6vw, 36px) clamp(16px, 2vw, 28px);
+  margin-top: clamp(28px, 3.4vw, 48px);
+  padding-top: clamp(28px, 3.4vw, 48px);
+  border-top: 1px solid var(--ft-line);
+}
+.ft-shot { min-width: 0; margin: 0; }
+.ft-shot-hero { grid-column: 1 / -1; }
+.ft-shot-open {
+  display: block; width: 100%; padding: 0; overflow: hidden;
+  border-radius: 10px; cursor: zoom-in;
+  box-shadow: 0 0 0 1px var(--ft-line);
+}
+.ft-shot-open img { width: 100%; height: auto; transition: transform 0.35s ease; }
+.ft-shot-open:hover img { transform: scale(1.015); }
+.ft-shot-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ft-shot figcaption {
+  margin-top: 10px; font-size: 13.5px; line-height: 1.45;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+.ft-shot figcaption b { display: block; font-weight: 500; font-size: 14.5px; color: var(--ink); }
+
 /* bits reused from the earlier window */
 .fd-tag { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 .fd-links { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1248,10 +1272,16 @@ ul { list-style: none; }
   .ft-sheet-head { grid-template-columns: auto 1fr; }
   .ft-sheet-head .fd-links { grid-column: 1 / -1; justify-content: flex-start; }
   .ft-sheet-cols { grid-template-columns: 1fr; }
+  .ft-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .ft-gallery { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
   .ft-view.is-in, .ft-view.is-out, .ft-flower { animation: none; }
   .ft-folder { transition: none; }
+  .ft-shot-open img { transition: none; }
+  .ft-shot-open:hover img { transform: none; }
 }
 .finder, .ft-view, .ft-sheet, .ft-paper, .ft-sheet-cols > *, .ft-sheet-head > * { min-width: 0; }
 .ft-sheet-head h3 { overflow-wrap: anywhere; }

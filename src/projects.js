@@ -44,6 +44,16 @@ const TREE = {
           aside: 'Inspired by the desk-based gameplay of Papers, Please.',
           facts: [['Stack', 'JavaScript, Vite'], ['Testing', 'Vitest, jsdom'], ['Design', 'Figma, pixel art'], ['Hosting', 'Render']],
           links: [['Play the game', 'https://rosterlab-icu-triage-game-627f.onrender.com/']],
+          // The first shot runs full width; the rest sit in a grid below it.
+          gallery: [
+            ['/images/work/triage-please-01.jpg', 'The triage desk', 'A patient at the desk, their chart on the tablet, and a room, staff member and priority chosen.', 'The Triage, Please front desk: a patient in silhouette, a speech bubble, the patient queue and a tablet showing symptoms, vitals and room options.'],
+            ['/images/work/triage-please-02.jpg', 'Title screen', 'Pixel-art hospital lobby with the main menu.', 'The title screen menu over a dimmed pixel-art hospital lobby.'],
+            ['/images/work/triage-please-03.jpg', 'Room assignment', 'Busy rooms, the live queue and patient dialogue at the desk.', 'The tablet listing occupied and free rooms beside the patient queue and dialogue.'],
+            ['/images/work/triage-please-04.jpg', 'Ethical dilemmas', 'Random events pause the shift and force a hard call.', 'A dilemma popup about a multi-car accident, with two choices for the player.'],
+            ['/images/work/triage-please-05.jpg', 'Guided tutorial', 'Nurse Lee spotlights each part of the desk, step by step.', 'A tutorial card from Nurse Lee highlighting the room picker on a dimmed desk.'],
+            ['/images/work/triage-please-06.jpg', 'Scenario creator', 'Build custom patients with a live in-game preview.', 'The scenario creator form with patient details, vitals and symptoms beside a live preview.'],
+            ['/images/work/triage-please-07.jpg', 'End of shift', 'Score, patients saved, accuracy and the local leaderboard.', 'The shift complete screen showing the final score, patients saved, accuracy and leaderboard.'],
+          ],
         },
         { id: 'credits', name: 'Team credits', kind: 'link', icon: 'link', meta: 'Website', href: 'https://www.credits.connorknoetze.com/' },
       ],
@@ -135,6 +145,16 @@ if (mount) {
     return `${node.note ? `<p class="ft-note">${esc(node.note)}</p>` : ''}<div class="ft-stack" style="--n:${n}">${folders}</div>`;
   }
 
+  function renderGallery(shots, name) {
+    const figure = ([src, title, caption, alt], i) => `<figure class="ft-shot${i === 0 ? ' ft-shot-hero' : ''}">
+      <button type="button" class="ft-shot-open" data-lightbox="image" data-src="${src}" aria-label="View ${esc(title)} full size">
+        <img src="${src}" alt="${esc(alt)}" width="1600" height="1066"${i === 0 ? '' : ' loading="lazy"'} decoding="async">
+      </button>
+      <figcaption><b>${esc(title)}</b> ${esc(caption)}</figcaption>
+    </figure>`;
+    return `<section class="ft-gallery" aria-label="${esc(name)} screenshots">${shots.map(figure).join('')}</section>`;
+  }
+
   function renderSheet(f) {
     const facts = (f.facts || []).map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
     const links = (f.links || []).map(([t, u]) => `<a class="fd-btn" href="${u}" target="_blank" rel="noopener noreferrer">${esc(t)} <span aria-hidden="true">↗</span></a>`).join('');
@@ -157,6 +177,7 @@ if (mount) {
           </div>
           ${facts ? `<dl class="fd-facts">${facts}</dl>` : ''}
         </div>
+        ${f.gallery ? renderGallery(f.gallery, f.name) : ''}
       </div>
     </article>`;
   }
