@@ -13,10 +13,6 @@ const icon = {
   min: '<svg viewBox="0 0 24 24"><path d="M6 18h12"/></svg>',
   max: '<svg viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></svg>',
   close: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
-  format: '<svg viewBox="0 0 24 24"><path d="M6 19l5-14h2l5 14M8.5 13h7"/></svg>',
-  attach: '<svg viewBox="0 0 24 24"><path d="M16.5 7.5l-7.8 7.8a2 2 0 1 0 2.8 2.8l8-8a4 4 0 0 0-5.7-5.7l-8 8a6 6 0 0 0 8.5 8.5l6.2-6.2"/></svg>',
-  link: '<svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
-  emoji: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9.5 10h.01M14.5 10h.01"/></svg>',
   trash: '<svg viewBox="0 0 24 24"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg>',
 };
 
@@ -58,7 +54,6 @@ function build() {
       <p class="compose-status" role="status" aria-live="polite" data-status></p>
       <footer class="compose-foot">
         <button type="submit" class="compose-send">Send</button>
-        <span class="compose-tools" aria-hidden="true">${icon.format}${icon.attach}${icon.link}${icon.emoji}</span>
         <button type="button" class="compose-trash" data-c="close" aria-label="Discard draft">${icon.trash}</button>
       </footer>
     </form>`;

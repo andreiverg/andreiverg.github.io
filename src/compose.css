@@ -142,16 +142,15 @@
   height: 36px;
   padding: 0 24px !important;
   border-radius: 18px;
-  background: var(--c-send) !important;
+  background: linear-gradient(120deg, var(--pink, #ff3d7f), var(--coral, #ff6a5c)) !important;
   color: #fff !important;
   font-weight: 500 !important;
   letter-spacing: 0.01em;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 14px rgba(240, 56, 107, 0.3);
+  transition: filter 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
-[data-theme="dark"] .compose-send { color: #062e6f !important; }
-.compose-send:hover { background: var(--c-send-hover) !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); }
+.compose-send:hover { filter: brightness(1.06); box-shadow: 0 6px 18px rgba(240, 56, 107, 0.42); transform: translateY(-1px); }
 .compose-send:disabled { opacity: 0.7; cursor: default; }
-.compose-tools { display: flex; gap: 14px; color: var(--c-muted); }
 .compose-trash {
   margin-left: auto;
   display: grid; place-items: center;
@@ -166,8 +165,7 @@
 
 @media (max-width: 560px) {
   .compose { right: 8px; width: calc(100vw - 16px); }
-  .compose-tools { display: none; }
-  .compose-msg textarea { min-height: 120px; }
+    .compose-msg textarea { min-height: 120px; }
   .compose input, .compose textarea { font-size: 16px; } /* no iOS zoom on focus */
   .compose.is-max { width: calc(100vw - 16px); }
 }

@@ -539,3 +539,17 @@ a.sign:hover ~ .sign-pop i { transform: translateX(3px); }
 @media (prefers-reduced-motion: reduce) {
   .badge-ring, .sign-pop { animation: none; }
 }
+
+/* multiplayer: each collaborator's cursor, tag and selection in their own colour */
+.fig-select, .fig-cursor { --fig-blue: var(--who, #0d99ff); }
+.fig-cursor[style*="--who"] svg { fill: var(--who); stroke: #fff; }
+.fig-avatars { display: flex; margin-left: 6px; }
+.fig-avatars i {
+  display: grid; place-items: center;
+  width: 22px; height: 22px; margin-left: -6px;
+  border-radius: 50%;
+  background: var(--who); color: #fff;
+  border: 2px solid var(--bg);
+  font-style: normal; font-size: 10px; font-weight: 700;
+}
+.fig-avatars i:first-child { margin-left: 0; }
