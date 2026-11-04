@@ -1,7 +1,7 @@
 /**
  * Landing page — the page assembles itself on every visit as if it were being
- * built live in Figma by three people at once: Andrei types the word, Kai
- * draws the colour field and signs the name, Sam lays out the links and pins
+ * built live in Figma by three people at once: Andrei types the word, Nathan
+ * draws the colour field and signs the name, George lays out the links and pins
  * the comment, then Andrei drops into the badge. Click, tap or press any key to skip.
  *
  * The finished layout is plain HTML/CSS; this script only choreographs it.
@@ -79,9 +79,9 @@ function makeActor(name, color) {
   return { name, cur, sel, size, pos: { x: 0, y: 0 } };
 }
 const andrei = makeActor('Andrei');
-const kai = makeActor('Kai', '#9747ff');
-const sam = makeActor('Sam', '#14ae5c');
-const actors = [andrei, kai, sam];
+const nathan = makeActor('Nathan', '#9747ff');
+const george = makeActor('George', '#14ae5c');
+const actors = [andrei, nathan, george];
 
 function place(a, x, y) {
   a.pos.x = x; a.pos.y = y;
@@ -183,9 +183,9 @@ async function trackWord(id, small) {
   tool('move');
 }
 
-// Kai: colour field, year tag and role, then signs the name
+// Nathan: colour field, year tag and role, then signs the name
 async function trackDecor(id, small) {
-  const a = kai;
+  const a = nathan;
   const W = landing.clientWidth;
   const H = landing.clientHeight;
   const field = { x: W * (small ? 0.42 : 0.5), y: 20, w: W * (small ? 0.58 : 0.5) - 20, h: H * 0.62 };
@@ -216,9 +216,9 @@ async function trackDecor(id, small) {
   hideSelect(a);
 }
 
-// Sam: the link row, then the comment pin on the name
+// George: the link row, then the comment pin on the name
 async function trackLinks(id) {
-  const a = sam;
+  const a = george;
   await wait(200, id);
   const first = links[0];
   const fb = box(first);
@@ -262,8 +262,8 @@ async function build(id) {
 
   // everyone joins the file from different corners
   place(andrei, W * 0.72, H * 0.82);
-  place(kai, W * 0.92, H * 0.12);
-  place(sam, W * 0.12, H * 0.86);
+  place(nathan, W * 0.92, H * 0.12);
+  place(george, W * 0.12, H * 0.86);
   fig.classList.add('show-grid', 'show-chrome');
   await wait(150, id);
   actors.forEach((a) => a.cur.classList.add('is-on'));
@@ -272,9 +272,9 @@ async function build(id) {
 
   await Promise.all([trackWord(id, small), trackDecor(id, small), trackLinks(id)]);
 
-  // Kai and Sam leave; Andrei drops into the badge and becomes the glossy pointer (ref 4)
-  kai.cur.classList.remove('is-on');
-  sam.cur.classList.remove('is-on');
+  // Nathan and George leave; Andrei drops into the badge and becomes the glossy pointer (ref 4)
+  nathan.cur.classList.remove('is-on');
+  george.cur.classList.remove('is-on');
   const bb = box(badge);
   built(badge);
   await move(andrei, bb.x + bb.w * 0.5, bb.y + bb.h * 0.5, 480, id);
@@ -345,3 +345,37 @@ root.classList.add('is-building');
 initTheme();
 initCompose();
 initDino();
+
+/* ------------------------------------------------------------ idle hint
+   If someone lingers on the landing page, nudge them toward the dino game.
+   Shows once per visit, after ~18s without any activity, once the build is done. */
+(() => {
+  const hint = $('[data-idle-hint]');
+  if (!hint) return;
+  const IDLE_MS = 18000;
+  let timer = 0;
+  let shown = false;
+
+  const hide = () => {
+    if (hint.hidden) return;
+    hint.classList.remove('is-on');
+    setTimeout(() => { hint.hidden = true; }, 350);
+  };
+  const show = () => {
+    if (shown || root.classList.contains('is-building') || document.querySelector('.dino')) { arm(); return; }
+    shown = true;
+    hint.hidden = false;
+    requestAnimationFrame(() => hint.classList.add('is-on'));
+  };
+  function arm() {
+    clearTimeout(timer);
+    if (!shown) timer = setTimeout(show, IDLE_MS);
+  }
+
+  ['pointermove', 'pointerdown', 'scroll', 'wheel', 'touchstart'].forEach((t) => window.addEventListener(t, arm, { passive: true }));
+  window.addEventListener('keydown', (e) => { if (shown && e.key.length === 1) hide(); arm(); });
+  hint.querySelector('[data-idle-close]').addEventListener('click', (e) => { e.stopPropagation(); hide(); });
+  // the game window opens in the same corner, so get out of its way
+  new MutationObserver(() => { if (document.querySelector('.dino')) hide(); }).observe(document.body, { childList: true });
+  arm();
+})();
